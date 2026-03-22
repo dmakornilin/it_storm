@@ -1,0 +1,55 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+
+.comment-card-block {
+  margin-top: 40px;
+  width: 854px;
+  .comment-author-section {
+    display: flex;
+    gap: 26px;
+    margin-bottom: 20px;
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      background-position: right top;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+
+    }
+    .comment-title {
+      .comment-author-name {
+        margin-bottom: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: $item-active-color;
+      }
+      .comment-date {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        color: #bebebe;
+
+      }
+    }
+    .comment-text {
+      margin-bottom: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: $menu-item-color;
+
+    }
+    .comment-actions {
+      display: flex;
+      height: 24px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+  }
+}

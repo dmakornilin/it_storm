@@ -1,0 +1,19 @@
+<div class="article-block">
+  <div class="article-item">
+    @if (article) {
+      <div class="article-item-image">
+        @if (image_path()) {
+          <img src="{{image_path()}}" alt="статья">
+        }
+      </div>
+      <div class="article-info-block">
+        <div class="article-title">{{ article.title }}</div>
+        <div class="article-text">{{ article.description }}</div>
+        <div class="article-acton" (click)="navigate_article()"><span>Читать дальше</span></div>
+      </div>
+
+      <div class="article-item-category">{{ article.category }}</div>
+
+    }
+  </div>
+</div>

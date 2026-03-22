@@ -1,0 +1,84 @@
+<div class="order-container">
+  <div class="order-div" [formGroup]="orderForm">
+    <div class="order-block">
+      <div class="order-title">
+        <div>{{ orderTitle }}</div>
+      </div>
+    </div>
+
+
+    @if (isOrder()) {
+      <div class="order-item">
+        <div class="order-item-input">
+          <div class="order-select-block">
+            <div class="order-select-selected">
+                <div class="order-selected-value">{{ currentValue }}</div>
+              <div class="order-selected-svg" (click)="to_open_select()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10 14C9.41668 14 8.83335 13.775 8.39168 13.3334L2.95835 7.90003C2.71668 7.65837 2.71668 7.25837 2.95835 7.0167C3.20002 6.77503 3.60002 6.77503 3.84168 7.0167L9.27502 12.45C9.67502 12.85 10.325 12.85 10.725 12.45L16.1583 7.0167C16.4 6.77503 16.8 6.77503 17.0417 7.0167C17.2833 7.25837 17.2833 7.65837 17.0417 7.90003L11.6083 13.3334C11.1667 13.775 10.5833 14 10 14Z"
+                    fill="#709FDC"/>
+                </svg>
+              </div>
+            </div>
+            @if (currentSelectFlag) {
+              <div class="order-select-options" appClickOutside (clickOutside)="hideFlagChoice()">
+                @for (itm of getPriceList(); track $index) {
+                  <div class="order-select-choice">
+                    <div (click)="setChoice(itm)">{{ getTitleByUrl(itm.url) }}</div>
+                  </div>
+                }
+              </div>
+            }
+
+          </div>
+        </div>
+      </div>
+    }
+
+    <div class="order-item">
+      <div class="order-item-input">
+        <div class="order-input">
+          <input type="text" class="input"
+                 formControlName="name"
+                 [ngStyle]="{'border-color': orderForm.get('name')?.invalid
+                  && (orderForm.get('name')?.dirty  || orderForm.get('name')?.touched )
+                  ? 'red' : '' }"
+                 placeholder="Ваше имя">
+          @if (orderForm.get('name')?.invalid && (orderForm.get('name')?.dirty || orderForm.get('name')?.touched)) {
+            <div class="error-messages">Введите свое имя</div>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="order-item">
+      <div class="order-item-input">
+        <div class="order-input">
+          <input type="text" class="input"
+                 formControlName="phone"
+                 [ngStyle]="{'border-color': orderForm.get('phone')?.invalid
+                  && (orderForm.get('phone')?.dirty  || orderForm.get('phone')?.touched )
+                  ? 'red' : '' }"
+                 placeholder="Ваше номер телефона">
+          @if (orderForm.get('phone')?.invalid && (orderForm.get('phone')?.dirty || orderForm.get('phone')?.touched)) {
+            <div class="error-messages">Введите номер телефона</div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="order-item order-button">
+      <button class="button big-button" (click)="postOrder()" >Оставить заявку</button>
+    </div>
+    @if (errorPost) {
+      <div class="error-messages">произошла ошибка при отправке формы, попробуйте еще раз</div>
+    }
+
+    <div class="order-close-section" (click)="to_main()">
+      <div class="order-close-div">
+        <div class="close-line-first"></div>
+        <div class="close-line-second"></div>
+      </div>
+    </div>
+  </div>
+</div>

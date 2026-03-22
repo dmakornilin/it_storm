@@ -1,0 +1,62 @@
+<section class="signup" [formGroup]="signupForm">
+  <div class="container">
+    <div class="auth-form">
+      <div class="auth-form-items">
+        <div class="auth-item-title">Регистрация на сайте</div>
+        <div class="auth-input">
+          <input type="text" class="input"  placeholder="Ваше имя"
+                 [ngStyle]="{'border-color': signupForm.get('name')?.invalid
+                  && (signupForm.get('name')?.dirty  || signupForm.get('name')?.touched )
+                  ? 'red' : ''
+                  }"
+                 formControlName="name">
+          @if ( (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) && signupForm.get('name')?.invalid) {
+            <div class="error-messages">Имя только русские буквы и пробелы. Каждое слово - с заглавной</div>
+          }
+        </div>
+        <div class="auth-input">
+          <input type="text" class="input" placeholder="Электронная почта"
+                 [ngStyle]="{'border-color': signupForm.get('email')?.invalid
+                  && (signupForm.get('email')?.dirty  || signupForm.get('email')?.touched )
+                  ? 'red' : ''
+                  }"
+                 formControlName="email">
+          @if ((signupForm.get('email')?.dirty || signupForm.get('email')?.touched) && signupForm.get('email')?.invalid) {
+            <div class="error-messages">Введите корректный email</div>
+          }
+
+        </div>
+        <div class="auth-input">
+          <input type="password" class="input" placeholder="Пароль"
+                 [ngStyle]="{'border-color': signupForm.get('password')?.invalid
+                  && (signupForm.get('password')?.dirty  || signupForm.get('password')?.touched )
+                  ? 'red' : ''
+                  }"
+                 formControlName="password">
+          @if ((signupForm.get('password')?.dirty || signupForm.get('password')?.touched) && signupForm.get('password')?.invalid) {
+            <div class="error-messages">Пароль не менее 8 символов, минимум 1 букву в заглавном регистре и цифру</div>
+          }
+        </div>
+        <div class="auth-checkbox">
+          <input type="checkbox" id="agree" formControlName="agree">
+          <label for="agree">Я принимаю <span (click)="to_agreement()" >условия пользовательского соглашения</span> и даю <span (click)="to_persdata()">согласие на обработку персональных данных.</span></label>
+          @if ((signupForm.get('agree')?.dirty || signupForm.get('agree')?.touched) && signupForm.get('agree')?.invalid) {
+            <div class="error-messages">Поставьте галочку</div>
+          }
+        </div>
+        <div class="auth-button">
+          <button class="button big-button"  [disabled]="signupForm.invalid" (click)="signup()"  >Зарегистрироваться</button>
+        </div>
+        <div class="auth-link">
+          Уже есть аккаунт?<a routerLink="/login">Войдите</a>
+        </div>
+      </div>
+
+
+      <div class="auth-form-image">
+        <img src="./images/pages/signup.png" alt="signup">
+      </div>
+
+    </div>
+  </div>
+</section>

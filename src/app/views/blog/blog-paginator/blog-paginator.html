@@ -1,0 +1,31 @@
+@if (getAmounts() >= 1) {
+  <div class="paginator-block">
+    @if (getCurrent() === 1) {
+      <div class="paginator-arr left_inactive_arrow">
+        <img src="./images/system/disable_arr.png" alt="arr-left">
+      </div>
+    } @else {
+      <div class="paginator-arr left_active_arrow" (click)="set_page_selected(getCurrent()-1)" >
+        <img src="./images/system/enable_arr.png" alt="arr-left">
+      </div>
+
+    }
+    @for (nn of getNumbers(); track $index) {
+      @if (nn===getCurrent()) {
+        <div class="page-item  is-active">{{ nn }}</div>
+      } @else {
+        <div class="page-item" (click)="set_page_selected(nn)">{{ nn }}</div>
+      }
+    }
+
+    @if (getCurrent()===getAmounts()) {
+    <div class="paginator-arr right_inactive_arrow">
+      <img src="./images/system/disable_arr.png" alt="arr-left">
+    </div>
+    } @else {
+      <div class="paginator-arr right_active_arrow" (click)="set_page_selected(getCurrent()+1)" >
+        <img src="./images/system/enable_arr.png" alt="arr-left">
+      </div>
+    }
+  </div>
+}

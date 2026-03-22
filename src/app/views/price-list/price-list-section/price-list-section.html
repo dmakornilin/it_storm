@@ -1,0 +1,10 @@
+<section class="price-list-section">
+  <div class="container">
+    <div class="price-section-title">Услуги, которые мы предлагаем</div>
+    <div class="price-items">
+      @for (product of priceList; track $index) {
+        <app-price-list-card [card]="product"></app-price-list-card>
+      }
+    </div>
+  </div>
+</section>

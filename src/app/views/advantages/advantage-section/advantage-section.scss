@@ -1,0 +1,57 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+
+.advantage-section {
+  margin-bottom: 120px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    .advantage-image {
+      width: 460px;
+      height: 453px;
+      border-radius: 5px;
+      margin-right: 12px;
+    }
+    .advantages {
+      max-width: calc(100% - 550px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .advantages-caption {
+        @include head-lora-38;
+        //margin-bottom: 20px;
+      }
+      .advantages-title{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $default-text-color;
+        max-width: 633px;
+        span{
+          font-weight: 500;
+        }
+      }
+      .advantage-items {
+        .advantage-items-title {
+          font-family: 'Lora', sans-serif;
+          font-weight: 400;
+          font-size: 26px;
+          color: $item-active-color;
+          margin-bottom: 20px;
+        }
+        .advantage-items-container {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+    }
+  }
+}

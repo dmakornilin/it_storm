@@ -1,0 +1,38 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.top-articles-section{
+  @include page-bottom;
+ .container {
+   .top-articles-caption {
+     margin-bottom: 40px;
+     @include head-lora-38;
+   }
+   .top-articles-items {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     gap: 8px;
+   }
+   .top-articles-toblog {
+     width: 100%;
+     display: flex;
+     justify-content: end;
+     div {
+       margin-top: 80px;
+       span {
+         padding-right: 14px;
+         font-family: 'Montserrat', sans-serif;
+         font-weight: 500;
+         font-size: 20px;
+         color: $item-active-color;
+       }
+       svg {
+         transform: translateY(2px);
+       }
+     }
+   }
+ }
+}

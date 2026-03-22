@@ -1,0 +1,26 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+.main-menu {
+  display: flex;
+  @include default-font500;
+  .font400 {
+    @include default-font400;
+  }
+  nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li {
+      margin-right: 30px;
+      list-style: none;
+      color: $menu-item-color;
+      cursor: pointer;
+      &.active {
+        color: $item-active-color;
+      }
+
+    }
+
+  }
+}

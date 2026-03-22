@@ -1,0 +1,44 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.blog-choice {
+  .container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    .filter-choice-block {
+      position: relative;
+      height: 50px;
+      width: 252px;
+    }
+    .items-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-right: 12px;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+
+      .item-ctg-select {
+        display: flex;
+        border: $item-active-color 2px solid;
+        border-radius: 5px;
+        padding: 3px 28px;
+        align-items: center;
+        color: $item-active-color;
+        .item-ctg-name {
+          padding-right: 8px;
+        }
+        .item-ctg-svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}

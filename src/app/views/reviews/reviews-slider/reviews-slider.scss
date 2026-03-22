@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.reviews-slider {
+  margin-bottom: 120px;
+  .container {
+    position: relative;
+    .slider-caption {
+      margin-bottom: 30px;
+      font-family: 'Lora', sans-serif;
+      font-weight: 400;
+      font-size: 38px;
+      color: $item-active-color;
+    }
+    .reviews-items {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+      .review-item {
+        width: 396px;
+        box-sizing: border-box;
+      }
+    }
+      .toprev-item {
+        position: absolute;
+        top: 50%;
+        transform: translateX(-30px);
+      }
+      .tonext-item {
+        position: absolute;
+        top: 50%;
+        right:60px;
+      }
+    }
+}

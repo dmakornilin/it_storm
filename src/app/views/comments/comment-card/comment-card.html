@@ -1,0 +1,15 @@
+@if (comment) {
+  <div class="comment-card-block">
+    <div class="comment-author-section">
+      <div class="author-avatar" [style.background-image]="'url(' + imageUrl() + ')'"></div>
+      <div class="comment-title">
+        <div class="comment-author-name">{{ comment.user.name }}</div>
+        <div class="comment-date">{{ comment.date | date:'dd.MM.yyyy HH:mm':'ru' }}</div>
+      </div>
+    </div>
+    <div class="comment-text">{{ comment.text }}</div>
+    <div class="comment-actions">
+      <app-comment-action-card [itm]="comment" ></app-comment-action-card>
+    </div>
+  </div>
+}

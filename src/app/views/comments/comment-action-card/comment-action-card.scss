@@ -1,0 +1,28 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.action-block {
+  margin-top: 40px;
+  display: flex;
+  gap: 15px;
+  .action-item {
+    display: flex;
+    align-items: center;
+    &.is-editable {
+      cursor: pointer;
+    }
+    .action-item-count{
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: $menu-item-color;
+      padding-right: 3px;
+      &.selected {
+        color: $item-active-color;
+      }
+
+    }
+  }
+}

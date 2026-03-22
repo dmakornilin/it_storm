@@ -1,0 +1,15 @@
+@if (card) {
+  <div class="product-card">
+    <div class="product-card-image">
+      <img [src]="image_file()" alt="logo">
+    </div>
+    <div class="product-card-caption">{{card.pl_type}}</div>
+    <div class="product-card-info">
+      <div class="product-card-descrip">{{card.title}}</div>
+      <div class="product-card-actions">
+        <div class="product-card-price">От {{card.price | currency: 'RUB' :'symbol-narrow' :'2.0':'ru-RU' }} </div>
+        <div class="product-card-button"><button class="button" (click)="to_order()">Подробнее</button> </div>
+      </div>
+    </div>
+  </div>
+}

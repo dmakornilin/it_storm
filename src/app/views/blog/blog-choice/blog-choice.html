@@ -1,0 +1,30 @@
+<div class="blog-choice">
+  <div class="container">
+    <div class="items-list">
+      @for (itm of selectedCtg(); track $index) {
+        @if (itm.isSelected) {
+          <div class="item-ctg-select">
+            <div class="item-ctg-name">{{itm.name}}</div>
+            <div class="item-ctg-svg" (click)="remove_category_choice(itm)">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_22181_627)">
+                  <line x1="1.93553" y1="2.65002" x2="13.9563" y2="14.6708" stroke="#709FDC" stroke-linecap="round"/>
+                  <line x1="13.9236" y1="2.62984" x2="1.90278" y2="14.6507" stroke="#709FDC" stroke-linecap="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_22181_627">
+                    <rect width="16" height="16" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        }
+      }
+    </div>
+    <div class="filter-choice-block">
+      <app-categ-filters [selectedCtg]="selectedCtg()"></app-categ-filters>
+    </div>
+  </div>
+
+</div>

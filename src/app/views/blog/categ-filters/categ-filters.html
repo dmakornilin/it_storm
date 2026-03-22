@@ -1,0 +1,44 @@
+@if (selectedCtg) {
+
+<div class="category-filters" [class.to-choice]="isMenuOpen()" appClickOutside (clickOutside)="hideMenu()">
+
+  @if (!isMenuOpen()) {
+    <div class="filter-caption-line"  (click)="to_change_flag(true)" >
+      <div class="filter-caption">Фильтр</div>
+      <div class="filter-caption-arrow">
+        <svg width="15" height="8" viewBox="0 0 15 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M7.22292 7.16458C6.63958 7.16458 6.05625 6.93958 5.61458 6.49792L0.18125 1.06458C-0.0604167 0.822916 -0.0604167 0.422917 0.18125 0.18125C0.422917 -0.0604167 0.822917 -0.0604167 1.06458 0.18125L6.49792 5.61458C6.89792 6.01458 7.54792 6.01458 7.94792 5.61458L13.3812 0.18125C13.6229 -0.0604167 14.0229 -0.0604167 14.2646 0.18125C14.5062 0.422917 14.5062 0.822916 14.2646 1.06458L8.83125 6.49792C8.38958 6.93958 7.80625 7.16458 7.22292 7.16458Z"
+            fill="#071739"/>
+        </svg>
+      </div>
+    </div>
+  } @else {
+    <div class="filter-caption-line to-choice" (click)="to_change_flag(false)">
+      <div class="filter-caption">Фильтр</div>
+      <div class="filter-caption-arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.99998 5.99997C10.5833 5.99997 11.1667 6.22497 11.6083 6.66663L17.0417 12.1C17.2833 12.3416 17.2833 12.7416 17.0417 12.9833C16.8 13.225 16.4 13.225 16.1583 12.9833L10.725 7.54997C10.325 7.14997 9.67498 7.14997 9.27498 7.54997L3.84165 12.9833C3.59999 13.225 3.19998 13.225 2.95832 12.9833C2.71665 12.7416 2.71665 12.3416 2.95832 12.1L8.39165 6.66663C8.83332 6.22497 9.41665 5.99997 9.99998 5.99997Z"
+            fill="#071739"/>
+        </svg>
+
+      </div>
+    </div>
+    <div class="items-list">
+      @for (ctg of selectedCtg; track $index) {
+        <div class="category-item" (click)="change_category_choice(ctg)"  [class.selected]="ctg.isSelected">
+          <div class="ctgitem-caption"> {{ ctg.name }}</div>
+          <div class="ctgitem-action"> {{get_categ_char(ctg)}} </div>
+        </div>
+      }
+    </div>
+
+  }
+</div>
+
+}
+<!--<div class="category-filters">-->
+<!--  <div class="filter-caption"></div>-->
+<!--  -->
+<!--</div>-->

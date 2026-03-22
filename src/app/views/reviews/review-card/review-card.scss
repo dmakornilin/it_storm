@@ -1,0 +1,43 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.review-block {
+    width: 396px;
+    height: 267px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid $item-active-color;
+
+    .review-title {
+      display: flex;
+      height: 60px;
+      align-items: center;
+      margin-bottom: 15px;
+
+      .review-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: $default-shadow-color;
+        background-size: contain;
+        overflow: hidden;
+      }
+
+      .review-author {
+        margin-left: 26px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: $item-active-color;
+      }
+    }
+
+    .review-text {
+      @include default-font400;
+      line-height: 140%;
+      color: $menu-item-color;
+    }
+}

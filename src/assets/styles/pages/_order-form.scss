@@ -1,0 +1,162 @@
+@import "../variables";
+@import "../mixins";
+
+.order-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: calc(100vh - 431px);
+
+  .order-div {
+    width: 727px;
+    height: 489px;
+    border-radius: 10px;
+    border: 2px solid $item-active-color;
+    position: relative;
+
+    .order-block {
+      display: flex;
+      text-align: center;
+
+      .order-title {
+        display: flex;
+        margin-top: 94px;
+        margin-bottom: 20px;
+        width: 100%;
+        font-family: 'Lora', sans-serif;
+        font-weight: 400;
+        font-size: 38px;
+        color: $item-active-color;
+        line-height: 130%;
+        justify-content: center;
+        flex-wrap: wrap;
+        div {
+          max-width: 422px;
+        }
+      }
+
+    }
+
+    .order-item {
+      width: 100%;
+      margin-bottom: 5px;
+
+      &.order-button {
+        margin-top: 18px;
+      }
+      .order-item-input {
+        margin-left: 152px;
+        width: 422px;
+
+        .order-input {
+          width: 422px;
+          input {
+            width: 100%;
+            height: 53px;
+            padding-left: 20px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: $item-active-color;
+          }
+        }
+
+
+        .order-select-block {
+          position: relative;
+          width: 100%;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          font-size: 14px;
+          color: $item-active-color;
+
+          .order-select-selected {
+            cursor: pointer;
+            display: flex;
+            border-radius: 3px;
+            justify-content: space-between;
+            padding-top: 2px;
+            height: 53px;
+            border: 1px solid $item-active-color;
+            box-sizing: border-box;
+
+            .order-selected-value {
+              padding-left: 20px;
+              margin-top: 14px;
+            }
+
+            .order-selected-svg {
+              padding-right: 20px;
+              margin-top: 14px;
+            }
+          }
+
+          .order-select-options {
+            display: block;
+            position: absolute;
+            top: calc(100% - 4px);
+            left: 0;
+            right: 0;
+            border-radius: 3px;
+            border: 1px solid $item-active-color;
+            box-sizing: border-box;
+            z-index: 1111;
+            background: white;
+
+            .order-select-choice {
+              position: relative;
+              cursor: pointer;
+
+              :hover {
+                background-color: lightgrey;
+                opacity: 70%;
+              }
+
+              div {
+                margin-top: 4px;
+                margin-bottom: 4px;
+                display: flex;
+                padding-left: 20px;
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+
+
+
+    .order-close-section {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 30px;
+      right: 30px;
+
+      .order-close-div {
+        position: relative;
+
+        .close-line-first {
+          border: 1px solid #bebebe;
+          width: 18px;
+          height: 0;
+          transform: rotate(135deg);
+        }
+
+        .close-line-second {
+          border: 1px solid #bebebe;
+          width: 18px;
+          height: 0;
+          transform: translate(0, -2px) rotate(45deg);
+        }
+
+      }
+    }
+
+  }
+}

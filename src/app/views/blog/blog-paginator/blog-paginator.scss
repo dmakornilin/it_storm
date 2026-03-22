@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+
+.paginator-block{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .paginator-arr{
+    &.left_inactive_arrow {
+      transform: translateY(2px);
+      margin-right: 30px;
+    }
+    &.left_active_arrow {
+      transform: rotate(180deg) translateY(2px);
+      margin-right: 30px;
+    }
+    &.right_active_arrow {
+      transform: translateY(2px);
+    }
+    &.right_inactive_arrow {
+      transform: rotate(180deg) translateY(2px);
+    }
+
+   }
+  .page-item {
+    gap: 10px;
+    width: 46px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: $menu-item-color;
+    &.is-active {
+      color: $default-shadow-color;
+    }
+
+  }
+}

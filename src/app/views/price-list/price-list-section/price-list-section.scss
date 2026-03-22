@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/global";
+@import "../../../../assets/styles/mixins";
+
+
+.price-list-section {
+  margin-bottom: 120px;
+  .container {
+    .price-section-title {
+      @include head-lora-38;
+      margin-bottom: 40px;
+    }
+
+    .price-items {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+}

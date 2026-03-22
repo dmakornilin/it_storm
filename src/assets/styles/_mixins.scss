@@ -1,0 +1,47 @@
+@use "fonts" as *;
+
+
+@mixin default-font600 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: $item-active-color;
+}
+
+@mixin default-font500 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@mixin default-font400 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+@mixin head-lora-36 {
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  color: $item-active-color;
+}
+
+@mixin head-lora-38 {
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  font-size: 38px;
+  color: $item-active-color;
+}
+
+@mixin page-top {
+  margin-top: 80px;
+}
+
+@mixin page-right {
+  margin-right: 100px;
+}
+
+@mixin page-bottom {
+  margin-bottom: 120px;
+}

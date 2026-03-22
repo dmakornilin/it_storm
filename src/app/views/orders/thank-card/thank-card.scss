@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/pages/order-form";
+
+.thanks-block {
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  .thanks_title {
+    margin-top: 0 !important;
+    div {
+      max-width: 450px !important;
+    }
+  }
+  .thanks_message {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: $default-text-color;
+    margin-bottom: 40px;
+  }
+}

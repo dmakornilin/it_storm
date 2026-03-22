@@ -1,0 +1,44 @@
+@import "../variables";
+@import "../mixins";
+
+
+.document-section {
+  .container {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    .document-title {
+      display: flex;
+      justify-content: center;
+      @include head-lora-36;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      line-height: 130%;
+    }
+    h2 {
+      margin: 32px 80px 12px 120px;
+    }
+    h3 {
+      margin: 20px 80px 12px 100px;
+    }
+    .doc-paragr {
+      margin: 0 80px 12px 80px;
+      @include default-font400;
+      line-height: 120%;
+      p {
+        margin: 8px 0 8px 20px;
+        span {
+          color: $item-active-color;
+          cursor: pointer;
+        }
+
+      }
+    }
+    .doc-paragr-title {
+      margin: 20px 100px 8px 100px;
+      @include default-font500;
+      line-height: 130%;
+
+    }
+  }
+}

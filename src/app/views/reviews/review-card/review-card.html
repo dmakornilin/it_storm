@@ -1,0 +1,9 @@
+<div class="review-block">
+  @if (review) {
+      <div class="review-title">
+        <div class="review-avatar" [style.background-image]="'url(' + imageUrl() + ')'"></div>
+        <div class="review-author">{{ review.name }}</div>
+      </div>
+      <div class="review-text">{{ review.text }}</div>
+  }
+</div>

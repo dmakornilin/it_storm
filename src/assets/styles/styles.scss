@@ -1,0 +1,119 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  //background-color: var(--mat-sys-surface);
+  background-color: white;
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "variables";
+@import "fonts";
+@import "global";
+
+
+.divrow-right {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid $item-active-color;
+  border-top: 2px solid $item-active-color;
+  transform: rotate(45deg);
+  cursor: pointer;
+
+  &.inactive {
+    cursor: auto;
+    border-right: 2px solid lightgray;
+    border-top: 2px solid lightgray;
+  }
+}
+
+
+.divrow-left {
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid $item-active-color;
+  border-bottom: 2px solid $item-active-color;
+  transform: rotate(45deg);
+  cursor: pointer;
+
+  &.inactive {
+    border-left: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    cursor: auto;
+  }
+}
+
+.divrow-right15 {
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid $item-active-color;
+  border-top: 2px solid $item-active-color;
+  transform: rotate(45deg);
+  cursor: pointer;
+
+  &.white {
+    border-right: 2px solid white;
+    border-top: 2px solid white;
+  }
+
+  &.inactive {
+    cursor: auto;
+    border-right: 2px solid lightslategray;
+    border-top: 2px solid lightslategray;
+  }
+
+}
+
+.divrow-left15 {
+  width: 15px;
+  height: 15px;
+  border-left: 2px solid $item-active-color;
+  border-bottom: 2px solid $item-active-color;
+  transform: rotate(45deg);
+  cursor: pointer;
+
+  &.white {
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+  }
+
+  &.inactive {
+    border-left: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    cursor: auto;
+  }
+
+}
+
+

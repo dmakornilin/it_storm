@@ -1,0 +1,90 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+
+.action-section {
+  position: relative;
+  .action-container {
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 1240 / 500;
+    position: relative;
+    z-index: -5;
+
+    .action-caption {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: $item-active-color;
+      padding-left: 80px;
+      margin-top: 8%;
+    }
+
+    .action-info {
+      width: 40%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 80px;
+
+      .action-title {
+        width: 570px;
+        height: 265px;
+
+        .action-title-header {
+          font-family: 'Lora', sans-serif;
+          font-weight: 400;
+          font-size: 50px;
+          color: white;
+          line-height: 65px;
+        }
+
+        .action-title-descrip {
+          margin-top: 20px;
+          width: 462px;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 130%;
+          color: white;
+        }
+      }
+
+    }
+
+    .action-circle {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      position: absolute;
+      border-radius: 50%;
+      background-color: $default-shadow-color;
+      transform: translate(-40%, -50%);
+      z-index: -2;
+    }
+  }
+  .action-button {
+    position: absolute;
+    bottom: calc(20px + 9%);
+    left: 80px;
+    button {
+      cursor: pointer;
+      width: 163px;
+      height: 51px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: white;
+
+    }
+  }
+
+}

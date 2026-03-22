@@ -1,0 +1,19 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+
+.main {
+  .container {
+    @include page-bottom;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.test-section {
+  margin-bottom: 32px;
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+}

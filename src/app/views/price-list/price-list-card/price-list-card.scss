@@ -1,0 +1,53 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/global";
+
+.product-card{
+  width: 290px;
+  .product-card-image {
+    width: 100%;
+    height: 290px;
+    margin-bottom: 16px;
+    border-radius: 5px;
+  }
+  .product-card-caption{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: $item-active-color;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .product-card-info {
+    height: 155px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .product-card-descrip {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      color: $menu-item-color;
+    }
+    .product-card-actions {
+      width: 100%;
+      height: 52px;
+      display: flex;
+      justify-content: space-between;
+      button {
+        width: 163px;
+        font-size: 16px;
+        color: white;
+      }
+      .product-card-price {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include default-font600;
+      }
+
+    }
+  }
+}

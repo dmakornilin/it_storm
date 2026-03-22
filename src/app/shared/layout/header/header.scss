@@ -1,0 +1,39 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
+header {
+  padding: 40px 0 40px 0;
+  @include default-font500;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .container-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      a {
+        cursor: pointer;
+        margin-right: $default-padding-xx;
+      }
+
+      .container-phone {
+        color: $item-active-color;
+        margin-right: 89px;
+      }
+      .container-profile {
+        z-index: 88;
+        .container-profile-info {
+          display: flex;
+          justify-content: center;
+          svg {
+            margin-right: 7px;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}

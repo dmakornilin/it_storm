@@ -1,0 +1,73 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.contacts-section {
+  margin-bottom: 120px;
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 77px;
+    padding-top: 0;
+
+    .contact-item-map {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      width: 48%;
+      aspect-ratio: 607 / 438;
+      border-radius: 5px;
+    }
+
+    .contact-item {
+      width: 48%;
+
+      .contact-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .contact-items-block {
+        width: 500px;
+        height: 306px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .contact-item {
+          width: 100%;
+          .contact-item-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            color: $item-active-color;
+            margin-bottom: 10px;
+          }
+          .contact-item-text {
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            color: $menu-item-color;
+
+          }
+          .contact-social-items {
+            display: flex;
+            width: 130px;
+            height: 30px;
+            justify-content: space-between;
+            div {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

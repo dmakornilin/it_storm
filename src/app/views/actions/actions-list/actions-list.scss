@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/fonts";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/global";
+
+.action-list{
+  margin-bottom: 120px;
+  .container{
+    position: relative;
+    .left-step-svg {
+      position: absolute;
+      top: 50%;
+      transform: translateX(12px);
+    }
+    .right-step-svg {
+      position: absolute;
+      top: 50%;
+      right: 112px;
+    }
+    .pages-block {
+      position: absolute;
+      width: 70px;
+      height: 12px;
+      bottom: 25px;
+      left: calc(50% - 35px);
+      display: flex;
+      justify-content: space-around;
+      .page-pointer{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid white;
+        &.active{
+          background-color: white;
+        }
+      }
+
+    }
+  }
+}

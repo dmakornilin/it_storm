@@ -1,0 +1,19 @@
+<div class="action-list">
+  @if (currentItemLink()) {
+    <div class="container">
+      <app-action-card [action]="currentItemLink()"></app-action-card>
+      <div class="left-step-svg" (click)="prev_item()">
+        <div class="divrow-left15 white" ></div>
+      </div>
+      <div class="right-step-svg" (click)="next_item()">
+          <div class="divrow-right15 white" ></div>
+      </div>
+
+      <div class="pages-block">
+        <div class="page-pointer" (click)="to_choice(0)" [class.active]="(currentItem===0)"></div>
+        <div class="page-pointer" (click)="to_choice(1)" [class.active]="(currentItem===1)"></div>
+        <div class="page-pointer" (click)="to_choice(2)" [class.active]="(currentItem===2)"></div>
+      </div>
+    </div>
+  }
+</div>
