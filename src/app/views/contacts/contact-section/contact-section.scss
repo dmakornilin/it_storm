@@ -41,6 +41,7 @@
 
         .contact-item {
           width: 100%;
+
           .contact-item-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
@@ -48,22 +49,37 @@
             color: $item-active-color;
             margin-bottom: 10px;
           }
+
           .contact-item-text {
-            cursor: pointer;
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
             font-size: 14px;
             line-height: 130%;
             color: $menu-item-color;
-
           }
+
+          .contact-item-link {
+            cursor: pointer;
+
+            &:hover {
+              color: blue;
+            }
+          }
+
           .contact-social-items {
             display: flex;
             width: 130px;
             height: 30px;
             justify-content: space-between;
+
             div {
               cursor: pointer;
+              svg {
+                &:hover path{
+                  fill: blue;
+
+                }
+              }
             }
           }
         }

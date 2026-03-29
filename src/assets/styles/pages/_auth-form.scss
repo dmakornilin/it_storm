@@ -12,8 +12,9 @@
     margin-right: 245px;
 
     .auth-item-title {
+      width: 430px;
       @include head-lora-36;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .auth-input {

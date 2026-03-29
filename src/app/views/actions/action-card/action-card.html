@@ -1,6 +1,6 @@
 @if (action) {
 
-<section class="action-section">
+<section class="action-section" [class.changed]="dataChanged" >
   <div class="action-container" [style.background-image]="'url(' + imageUrl() + ')'">
     <div class="action-circle"></div>
     <div class="action-caption">{{ action.caption }}</div>

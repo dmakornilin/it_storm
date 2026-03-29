@@ -53,11 +53,17 @@
         }
 
         .footer-item-info {
-          cursor: pointer;
           line-height: 130%;
           font-weight: 400;
           color: $menu-item-color;
           font-size: 16px;
+        }
+        .footer-item-link {
+          cursor: pointer;
+          &:hover {
+            color: blue;
+          }
+
         }
       }
 
@@ -78,6 +84,11 @@
             }
             a {
               cursor: pointer;
+            }
+            svg {
+              &:hover path {
+                fill: blue;
+              }
             }
           }
         }

@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component,  Input} from '@angular/core';
 import {ArticleCommentItem} from '../../../../types/articles/article-detail.type';
 import {DatePipe} from '@angular/common';
 import {CommentActionCard} from '../comment-action-card/comment-action-card';

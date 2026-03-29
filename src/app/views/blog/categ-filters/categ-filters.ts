@@ -1,12 +1,10 @@
-import {Component, inject, Input, signal} from '@angular/core';
+import {Component, computed, inject,  signal} from '@angular/core';
 import {
-  CategListSelected,
   CategorySelectedType
 } from '../../../../types/articles/categories.type';
-import {CategoriesService} from '../../../shared/services/preload/categories-service';
 import {ClickOutsideDirective} from '../../../shared/directives/click-outside';
 import {Params, Router} from '@angular/router';
-import {NavigateService} from '../../../shared/services/navigate-service';
+import {BlogPaginatorService} from '../../../shared/services/blog/blog-paginator-service';
 
 @Component({
   selector: 'app-categ-filters',
@@ -18,13 +16,10 @@ import {NavigateService} from '../../../shared/services/navigate-service';
 })
 export class CategFilters {
   isMenuOpen= signal<boolean>(false);
+
   private readonly router = inject(Router);
-  private readonly categorySrv= inject(CategoriesService);
-  private readonly navigateSrv= inject(NavigateService);
-
-
-  @Input() selectedCtg: CategListSelected | null = null;
-
+  private readonly blogPaginatorService = inject(BlogPaginatorService);
+  public selectedCtg = computed(()=> this.blogPaginatorService.selectedCtg());
 
   get_categ_char(ctg:CategorySelectedType):string {
     if (ctg.isSelected) { return '-'} else return '+';
@@ -33,19 +28,15 @@ export class CategFilters {
   change_category_choice(ctg:CategorySelectedType):void {
     let ff:boolean=true;
     if (ctg.isSelected) { ff=false;}
-     let prm_list:Params=[];
-
-    if (this.selectedCtg) {
-      this.selectedCtg.forEach(itm=>{
-        let yy = itm.isSelected;
-        if (itm.url===ctg.url) { yy=ff }
-        if (yy) { prm_list[itm.url]='set';    }
-      })
-    }
+    let prm_list:Params=[];
+    let yy=false;
+    this.selectedCtg().forEach((itm)=>{
+      yy = itm.isSelected;
+      if (itm.url===ctg.url) { yy=ff }
+      if (yy) { prm_list[itm.url]='set';    }
+    });
     this.router.navigate(['blog'],{ queryParams: prm_list });
-    this.navigateSrv.setSelected(2);
-    this.categorySrv.loading();
-
+    this.blogPaginatorService.refreshSelectedCtg();
   }
 
   hideMenu() {

@@ -1,4 +1,4 @@
-import {inject, Injectable, signal} from '@angular/core';
+import { inject, Injectable, signal} from '@angular/core';
 import {
   ArticleCommentItem,
   ArticleDetailType,
@@ -10,9 +10,7 @@ import {DefResponceType} from '../../../../types/def.responce.type';
 import {environment} from '../../../../environments/environment';
 import {PopularArticleType} from '../../../../types/articles/popular-article.type';
 import {CommentActionsService} from '../comments/comment-actions-service';
-import {CommentActionsList} from '../../../../types/comments/comment-actions.type';
-import {UserCommentActions} from '../../params';
-import {concatMap, from, map, Observable} from 'rxjs';
+import {concatMap, from, map} from 'rxjs';
 import {AuthService} from '../../../core/auth/auth-service';
 
 @Injectable({
@@ -27,12 +25,11 @@ export class BlogArticleItemService {
   articleUrl = signal<string>('');
   private readonly authService = inject(AuthService);
   private readonly actionSrv = inject(CommentActionsService);
+  protected readonly _snackBar = inject(MatSnackBar);
+  private readonly http = inject(HttpClient);
 
   comments = signal<ArticleCommentItem[]>([]);
 
-
-  _snackBar = inject(MatSnackBar);
-  private readonly http = inject(HttpClient);
 
 
   load_article_comments() {

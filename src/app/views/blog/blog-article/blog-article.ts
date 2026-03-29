@@ -1,12 +1,11 @@
-import {Component, effect, inject, ViewEncapsulation} from '@angular/core';
+import {Component, computed, effect, inject, ViewEncapsulation} from '@angular/core';
 import {BlogArticleItemService} from '../../../shared/services/blog/blog-article-item-service';
-import {ArticleCommentItem, ArticleDetailType} from '../../../../types/articles/article-detail.type';
-import {PopularArticleType} from '../../../../types/articles/popular-article.type';
+import {ArticleCommentItem} from '../../../../types/articles/article-detail.type';
 import {TopArticleCard} from '../../articles/top-article-card/top-article-card';
 import {NavigateService} from '../../../shared/services/navigate-service';
 import {AuthService} from '../../../core/auth/auth-service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {CommentItemType} from '../../../../types/comments/comment-item.type';
 import {ClickOutsideDirective} from '../../../shared/directives/click-outside';
 import {CommentsService} from '../../../shared/services/comments/comments-service';
@@ -19,7 +18,6 @@ import {CommentCard} from '../../comments/comment-card/comment-card';
     TopArticleCard,
     ReactiveFormsModule,
     FormsModule,
-    RouterLink,
     ClickOutsideDirective,
     SpinLoader,
     CommentCard
@@ -30,30 +28,37 @@ import {CommentCard} from '../../comments/comment-card/comment-card';
 })
 export class BlogArticle {
 
-  authService = inject(AuthService);
+  private readonly  authService = inject(AuthService);
   private readonly blogArticleSrv = inject(BlogArticleItemService);
   private readonly navigateSrv = inject(NavigateService);
   private readonly commentSrv = inject(CommentsService);
-  articleUrl: string = '';
-  articleTitle: string = '';
-  comments: ArticleCommentItem[] = [];
-  isEditable: boolean = false;
-  check_flag: boolean = true;
-  comment = '';
-
   private readonly routeAct = inject(ActivatedRoute);
-  isCommentLoad():boolean {
-    return this.blogArticleSrv.isCommentLoad();
-  }
 
-  to_login() {
+  protected articleUrl: string = '';
+  protected comments: ArticleCommentItem[] = [];
+  protected check_flag: boolean = true;
+  protected comment = '';
+
+
+
+  protected readonly isCommentsLoading = computed(() => this.blogArticleSrv.isCommentLoad());
+  protected readonly isEditable =computed(() => this.authService.isLogin());
+  protected readonly comments_list =computed(()=>this.blogArticleSrv.comments() );
+  protected readonly totalComments = computed(()=>this.blogArticleSrv.totalCommentsCount() );
+
+  protected readonly getArticleInfo =computed(()=> this.blogArticleSrv.articleDetailInfo());
+  protected readonly getRelatedArticles =computed(()=> this.blogArticleSrv.relatedArticles());
+
+
+  protected to_login() {
     this.navigateSrv.to_login();
   }
-  to_signup() {
+
+  protected to_signup() {
     this.navigateSrv.to_signup();
   }
 
-  post_comment()
+  protected post_comment()
   :
     void {
       this.check_flag = (this.comment.length >= 1);
@@ -68,47 +73,32 @@ export class BlogArticle {
     }
   }
 
-  load_next_comments() {
+  protected load_next_comments() {
     this.blogArticleSrv.load_article_comments();
   }
 
-  comments_list(): ArticleCommentItem[] {
-    return this.blogArticleSrv.comments();
-  }
 
-  totalComments(): number {
-    return this.blogArticleSrv.totalCommentsCount();
-  };
-
-  setCheckflag(ff: boolean) {
+  protected setCheckflag(ff: boolean) {
     this.check_flag = ff;
   }
 
-  to_blog(): void {
-    this.navigateSrv.to_blog();
+  protected to_blog(): void {
+      this.navigateSrv.to_blog();
   }
 
-  imageUrl(): string {
+  protected imageUrl(): string {
     if (this.getArticleInfo()) {
       return './images/data/' + this.getArticleInfo()?.image
     } else return '';
   }
 
-  getArticleInfo(): ArticleDetailType | null {
-    return this.blogArticleSrv.articleDetailInfo();
-  }
-
-  getRelatedArticles(): PopularArticleType {
-    return this.blogArticleSrv.relatedArticles();
-  }
-
-
   refresh(u: string): void {
-    this.isEditable = this.authService.isLogin();
-    this.articleUrl = u;
+    this.articleUrl=u;
     this.blogArticleSrv.load_article_info(u);
     this.blogArticleSrv.load_related_articles(u);
   }
+
+
 
   constructor() {
     effect(() => {
@@ -118,7 +108,6 @@ export class BlogArticle {
       if (u.length<1) {
         const page=  this.routeAct.snapshot.queryParams['url'];
         if (page) {u=page as string}
-        // console.log(page);
       }
       const flg = this.navigateSrv.setArtRefresh();
       if (u.length > 1) {

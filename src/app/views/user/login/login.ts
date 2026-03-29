@@ -1,4 +1,4 @@
-import {Component, effect, inject} from '@angular/core';
+import {Component, computed, effect, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgStyle} from '@angular/common';
 import {RouterLink} from '@angular/router';
@@ -27,6 +27,9 @@ export class Login {
   private readonly navigateService = inject(NavigateService);
   private readonly _snackBar = inject(MatSnackBar);
 
+  loginError = computed(()=>this.authService.loginError() );
+
+  protected readonly checkLoading =computed(()=> this.authService.isLogin() );
 
 
   constructor() {
@@ -47,9 +50,6 @@ export class Login {
 
   private check_loading() {
     const is_login=this.authService.isLogin();
-    if (!is_login) {
-      this._snackBar.open('Неверный пароль или логин');
-    }
   }
 
   private check_login(yy:boolean) {

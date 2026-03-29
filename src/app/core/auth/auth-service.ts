@@ -19,7 +19,7 @@ export class AuthService {
   public userInfo = signal<UserInfoType | null>(null);
   public isLogin = signal<boolean>(false);
   public message = signal<string | null>(null);
-
+  public loginError =signal<boolean>(false);
 
   public loading = signal<boolean>(false);
   public error = signal<string | null>(null);
@@ -101,6 +101,7 @@ export class AuthService {
     this.userInfo.set(null);
     this.error.set(null);
     this.loading.set(true);
+    this.loginError.set(false);
 
     this.http.post<DefResponceType | UsrAuthType>(
       environment.apiUrl + 'login', {
@@ -116,11 +117,13 @@ export class AuthService {
         const loginResponse = logUsr as UsrAuthType;
         if (!loginResponse.accessToken || !loginResponse.refreshToken || !loginResponse.userId) {
           error = 'Ошибка параметра логина';
+          this.loginError.set(true);
         }
         if (error) {
           this.error.set(error);
           this.user.set(null);
           this.loading.set(false);
+          this.loginError.set(true);
         } else {
           this.user.set(logUsr as UsrAuthType);
           this.saveAuthService.setTokens((logUsr as UsrAuthType).accessToken, (logUsr as UsrAuthType).refreshToken);
@@ -138,11 +141,14 @@ export class AuthService {
                   this.user.set(null);
                   this.userInfo.set(null);
                   this.loading.set(false);
+                  this.loginError.set(true);
                 } else {
                   this.userInfo.set(usrInfo as UserInfoType);
                   this.isLogin.set(true);
                   this.saveAuthService.saveUserInfo(usrInfo as UserInfoType);
                   this.loading.set(false);
+                  this.loginError.set(false);
+
                 }
               },
               error: (err) => {
@@ -150,6 +156,8 @@ export class AuthService {
                 this.user.set(null);
                 this.userInfo.set(null);
                 this.loading.set(false);
+                this.loginError.set(true);
+
               }
             }
           )
@@ -160,10 +168,13 @@ export class AuthService {
           this.error.set(errorResponce.message);
           this.user.set(null);
           this.loading.set(false);
+          this.loginError.set(true);
         } else {
           this.error.set('Ошибка логина');
           this.user.set(null);
           this.loading.set(false);
+          this.loginError.set(true);
+
         }
       }
     })

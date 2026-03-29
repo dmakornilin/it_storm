@@ -1,15 +1,15 @@
 <section class="blog-section">
   <div class="container">
     <div class="blog-page-title" >Блог</div>
-    <app-blog-choice></app-blog-choice>
+    <app-blog-choice/>
     <div class="blog-articles">
       @for (itm of getArticles(); track $index) {
-        <app-top-article-card [article]="itm"></app-top-article-card>
+        <app-top-article-card [article]="itm"/>
       }
 
     </div>
     <div class="paginator-section">
-      <app-blog-paginator></app-blog-paginator>
+      <app-blog-paginator/>
     </div>
   </div>
 </section>

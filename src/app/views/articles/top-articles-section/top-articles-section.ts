@@ -1,7 +1,6 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {PopularArticlesService} from '../../../shared/services/preload/popular-articles-service';
 import {TopArticleCard} from '../top-article-card/top-article-card';
-import {PopularArticleType} from '../../../../types/articles/popular-article.type';
 import {Router} from '@angular/router';
 import {NavigateService} from '../../../shared/services/navigate-service';
 
@@ -17,12 +16,10 @@ export class TopArticlesSection {
   topArticleSrv = inject(PopularArticlesService);
   private readonly  router = inject(Router);
   private readonly navigateSrv= inject(NavigateService);
+  protected readonly topArticles = computed(()=>this.topArticleSrv.popularArticles() )
 
-  topArticles():PopularArticleType {
-    return this.topArticleSrv.popularArticles();
-  }
 
-  to_blog() {
+  protected to_blog() {
     this.navigateSrv.to_blog();
   }
 

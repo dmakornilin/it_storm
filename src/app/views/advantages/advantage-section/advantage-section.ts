@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {AdvantageService} from '../../../shared/services/preload/advantage-service';
 import {AdvantageCard} from '../advantage-card/advantage-card';
 
@@ -12,5 +12,5 @@ import {AdvantageCard} from '../advantage-card/advantage-card';
 })
 export class AdvantageSection {
   advantageService= inject(AdvantageService);
-  advantageList =this.advantageService.advantages();
+  advantageList = computed(()=>this.advantageService.advantages());
 }

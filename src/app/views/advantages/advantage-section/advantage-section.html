@@ -13,8 +13,8 @@
       <div class="advantage-items">
         <div class="advantage-items-title">Наши преимущества</div>
         <div class="advantage-items-container">
-          @for (adv of advantageList; track $index) {
-            <app-advantage-card [advantage]="adv" ></app-advantage-card>
+          @for (adv of advantageList(); track $index) {
+            <app-advantage-card [advantage]="adv"/>
           }
         </div>
 

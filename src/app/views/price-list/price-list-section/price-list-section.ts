@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {PriceService} from '../../../shared/services/preload/price-service';
 import {PriceListCard} from '../price-list-card/price-list-card';
 
@@ -12,7 +12,6 @@ import {PriceListCard} from '../price-list-card/price-list-card';
 })
 export class PriceListSection {
   priceService=inject(PriceService);
-
-  priceList =this.priceService.priceList();
+  priceList = computed(()=>this.priceService.priceList());
 
 }

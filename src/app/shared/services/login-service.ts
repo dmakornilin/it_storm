@@ -7,6 +7,8 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../core/auth/auth-service';
 import {StorageAuthinfoService} from '../../core/common-srv/storage-authinfo-service';
+import {REFRESH_TOKEN_KEY,USER_INFO_KEY} from '../../core/common-srv/storage-const';
+
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,7 @@ export class LoginService {
 
 
   public refresh(): Observable<RefreshResponseType> {
-    const refreshToken = LocalStorageService.getStr(this.saveAuthService.refreshTokenKey);
+    const refreshToken = LocalStorageService.getStr(REFRESH_TOKEN_KEY);
     return this.http.post<RefreshResponseType>(environment.apiUrl + 'refresh', {
       refreshToken: refreshToken
     });
@@ -41,7 +43,7 @@ export class LoginService {
     if (!tokens || !tokens.accessToken || !tokens.refreshToken) {
       this.removeUserLogin();
     } else {
-      const dataStorage = LocalStorageService.getStr(this.saveAuthService.userInfoKey);
+      const dataStorage = LocalStorageService.getStr(USER_INFO_KEY);
       if (!dataStorage) {
         this.removeUserLogin();
       } else {

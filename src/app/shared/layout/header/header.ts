@@ -5,12 +5,15 @@ import {BaseParams} from '../../params';
 import {AuthService} from '../../../core/auth/auth-service';
 import {LoginService} from '../../services/login-service';
 import {NavigateService} from '../../services/navigate-service';
+import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
 
 @Component({
   selector: 'app-header',
   imports: [
     RouterLink,
-    MainMenu
+    MainMenu,
+    MatMenu,
+    MatMenuTrigger
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',

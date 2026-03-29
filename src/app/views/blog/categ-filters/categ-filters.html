@@ -1,4 +1,4 @@
-@if (selectedCtg) {
+@if (selectedCtg()) {
 
 <div class="category-filters" [class.to-choice]="isMenuOpen()" appClickOutside (clickOutside)="hideMenu()">
 
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="items-list">
-      @for (ctg of selectedCtg; track $index) {
+      @for (ctg of selectedCtg(); track $index) {
         <div class="category-item" (click)="change_category_choice(ctg)"  [class.selected]="ctg.isSelected">
           <div class="ctgitem-caption"> {{ ctg.name }}</div>
           <div class="ctgitem-action"> {{get_categ_char(ctg)}} </div>
@@ -38,7 +38,3 @@
 </div>
 
 }
-<!--<div class="category-filters">-->
-<!--  <div class="filter-caption"></div>-->
-<!--  -->
-<!--</div>-->

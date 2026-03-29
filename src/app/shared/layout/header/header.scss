@@ -22,6 +22,10 @@ header {
       .container-phone {
         color: $item-active-color;
         margin-right: 89px;
+        cursor: pointer;
+        &:hover {
+          color: blue;
+        }
       }
       .container-profile {
         z-index: 88;

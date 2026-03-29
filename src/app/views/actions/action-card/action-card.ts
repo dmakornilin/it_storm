@@ -8,10 +8,11 @@ import {NavigateService} from '../../../shared/services/navigate-service';
   templateUrl: './action-card.html',
   styleUrl: './action-card.scss',
 })
-export class ActionCard  {
+export class ActionCard{
   @Input() action: ActionItemType | null = null;
 
   private readonly navigateSrv = inject(NavigateService);
+  dataChanged = false;
 
 
   imageUrl(): string {
