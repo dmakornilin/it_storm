@@ -1,6 +1,7 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, computed, inject, input} from '@angular/core';
 import {ActionItemType} from '../../../../types/actions/action-item.type';
 import {NavigateService} from '../../../shared/services/navigate-service';
+import {ModalNavigateService} from '../../../shared/services/modal-navigate-service';
 
 @Component({
   selector: 'app-action-card',
@@ -9,20 +10,23 @@ import {NavigateService} from '../../../shared/services/navigate-service';
   styleUrl: './action-card.scss',
 })
 export class ActionCard{
-  @Input() action: ActionItemType | null = null;
 
   private readonly navigateSrv = inject(NavigateService);
-  dataChanged = false;
+  private readonly modalSrv = inject(ModalNavigateService);
 
 
-  imageUrl(): string {
-    if (this.action) {
-      return './images/pages/actions/' + this.action.image;
-    } else return '';
-  }
+  protected readonly dataChanged = false;
+  protected readonly imageUrl = computed(()=> {
+    return './images/pages/actions/' + this.action()?.image;
+    }
+  )
 
-  to_order() {
-    this.navigateSrv.to_order('');
+  public readonly action =input <ActionItemType>();
+
+
+  protected to_order() {
+    this.navigateSrv.to_main();
+    this.modalSrv.toOrderService('');
   }
 
 }

@@ -1,14 +1,14 @@
-@if (action) {
+@if (action()) {
 
 <section class="action-section" [class.changed]="dataChanged" >
   <div class="action-container" [style.background-image]="'url(' + imageUrl() + ')'">
     <div class="action-circle"></div>
-    <div class="action-caption">{{ action.caption }}</div>
+    <div class="action-caption">{{ action()?.caption }}</div>
     <div class="action-info">
       <div class="action-title">
-        <div class="action-title-header" [innerHTML]="action.title_html"></div>
-        @if (action.description) {
-          <div class="action-title-descrip">{{ action.description }}</div>
+        <div class="action-title-header" [innerHTML]="action()?.title_html"></div>
+        @if (action()?.description) {
+          <div class="action-title-descrip">{{ action()?.description }}</div>
         }
       </div>
     </div>

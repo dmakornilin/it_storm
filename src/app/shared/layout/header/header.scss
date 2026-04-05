@@ -1,11 +1,17 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/mixins";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/mixins" as mix;
 
 header {
   padding: 40px 0 40px 0;
-  @include default-font500;
+  @include mix.default-font500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 
-  .container {
+
+  .header-container {
+    width: var.$default-content-width;
     display: flex;
     justify-content: space-between;
 
@@ -16,11 +22,11 @@ header {
 
       a {
         cursor: pointer;
-        margin-right: $default-padding-xx;
+        margin-right: var.$default-padding-xx;
       }
 
       .container-phone {
-        color: $item-active-color;
+        color: var.$item-active-color;
         margin-right: 89px;
         cursor: pointer;
         &:hover {
@@ -29,6 +35,7 @@ header {
       }
       .container-profile {
         z-index: 88;
+        padding-right: var.$default-padding-xx;
         .container-profile-info {
           display: flex;
           justify-content: center;

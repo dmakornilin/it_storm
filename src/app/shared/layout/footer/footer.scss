@@ -1,10 +1,17 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/mixins";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/mixins" as mix;
 
 .footer {
-  background-color: $active-background-color;
-  .container {
-    padding: 40px $default-padding-xx;
+  width: 100%;
+  background-color: var.$active-background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .footer-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 1240px;
 
     .footer-top {
       display: flex;
@@ -48,14 +55,14 @@
       .footer-column {
         .footer-item-title {
           font-weight: 500;
-          color: $item-active-color;
+          color: var.$item-active-color;
           margin-bottom: 10px;
         }
 
         .footer-item-info {
           line-height: 130%;
           font-weight: 400;
-          color: $menu-item-color;
+          color: var.$menu-item-color;
           font-size: 16px;
         }
         .footer-item-link {

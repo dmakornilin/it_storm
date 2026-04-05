@@ -1,6 +1,6 @@
 import {Component, effect, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {MainRegular} from '../../../shared/service-params';
+import {MainRegular} from '../../../core/settings/service-params';
 import {NgStyle} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {LoginService} from '../../../shared/services/login-service';

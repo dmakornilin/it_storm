@@ -1,36 +1,43 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {Router} from '@angular/router';
+import {
+  MENU_ABOUT_INDEX,
+  MENU_ARTICLE_INDEX, MENU_CONTACTS_INDEX, MENU_NOTHING_INDEX,
+  MENU_REVIEW_INDEX,
+  MENU_SERVICE_INDEX
+} from '../components/main-menu/main-menu-index';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NavigateService {
-
-  menuSelect = signal<number>(-10);
   private readonly router = inject(Router);
+
+  menuSelect = signal<number>(MENU_NOTHING_INDEX);
   articleUrl = signal<string>('');
   setArtRefresh = signal<boolean>(false);
-  setOrderRefresh = signal<boolean>(false);
+  orderTypeSelected =signal<string>('');
+  orderSelectedService =signal<string>('');
 
 
-  setSelected(selected: number) {
-    if (selected === 0) {
+  public setSelected(selected: number) {
+    if (selected === MENU_SERVICE_INDEX) {
       this.router.navigate(['/'],
         {fragment: 'priceList'});
     }
-    if (selected === 1) {
+    if (selected === MENU_ABOUT_INDEX) {
       this.router.navigate(['/'],
         {fragment: 'about'});
     }
-    if (selected === 2) {
+    if (selected === MENU_ARTICLE_INDEX) {
       this.router.navigate(['/'],
         {fragment: 'articles'});
     }
-    if (selected === 3) {
+    if (selected === MENU_REVIEW_INDEX) {
       this.router.navigate(['/'],
         {fragment: 'reviews'});
     }
-    if (selected === 4) {
+    if (selected === MENU_CONTACTS_INDEX) {
       this.router.navigate(['/'],
         {fragment: 'contacts'});
     }
@@ -38,7 +45,7 @@ export class NavigateService {
   }
 
   public to_main() {
-    this.menuSelect.set(-10);
+    this.menuSelect.set(MENU_NOTHING_INDEX);
     this.router.navigate(['/']);
   }
 
@@ -51,48 +58,23 @@ export class NavigateService {
     this.articleUrl.set(url);
   }
 
-
-  public tosbros_cons_flag() {
-    this.setOrderRefresh.set(false)
-  }
-
-  public to_order_consult() {
-    this.setOrderRefresh.set(true)
-    this.menuSelect.set(-10);
-    this.router.navigate(['order'], {queryParams: {tps: 'consultation'}});
-  }
-
-  public to_order(srvTp: string) {
-    this.menuSelect.set(-10);
-    let ss = srvTp;
-    if (srvTp === '') {
-      ss = 'designe'
-    }
-    this.router.navigate(['order'], {queryParams: {tps: 'order', stp: ss}});
-  }
-
-  public to_order_thanks() {
-    this.menuSelect.set(-10);
-    this.router.navigate(['/thanks']);
-  }
-
   public to_login() {
-    this.menuSelect.set(-10);
+    this.menuSelect.set(MENU_NOTHING_INDEX);
     this.router.navigate(['/login']);
   }
 
   public to_agreement() {
-    this.menuSelect.set(-10);
+    this.menuSelect.set(MENU_NOTHING_INDEX);
     this.router.navigate(['/agreement']);
   }
 
   public to_persdata() {
-    this.menuSelect.set(-10);
+    this.menuSelect.set(MENU_NOTHING_INDEX);
     this.router.navigate(['/persdata']);
   }
 
   public to_signup() {
-    this.menuSelect.set(-10);
+    this.menuSelect.set(MENU_NOTHING_INDEX);
     this.router.navigate(['/signup']);
   }
 

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {BlogPaginatorService} from '../../../shared/services/blog/blog-paginator-service';
 
 @Component({
@@ -10,19 +10,19 @@ import {BlogPaginatorService} from '../../../shared/services/blog/blog-paginator
 export class BlogPaginator {
   private readonly paginatorSrv=inject(BlogPaginatorService);
 
-  getAmounts():number {
+  protected readonly getAmounts = computed(() => {
     return this.paginatorSrv.pageAmount();
-  }
+  })
+
+  protected readonly getCurrent = computed(() => {
+    return this.paginatorSrv.currentPage();
+  })
 
   getNumbers():number[] {
     const nn=this.getAmounts();
     if (nn>=1) {
       return Array.from({length: nn}, (_, i) => i + 1);
     } else {return []}
-  }
-
-  getCurrent():number {
-    return this.paginatorSrv.currentPage();
   }
 
   set_page_selected(page:number) {

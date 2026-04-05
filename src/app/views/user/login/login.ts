@@ -5,7 +5,6 @@ import {RouterLink} from '@angular/router';
 import {LoginService} from '../../../shared/services/login-service';
 import {AuthService} from '../../../core/auth/auth-service';
 import {NavigateService} from '../../../shared/services/navigate-service';
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -25,11 +24,11 @@ export class Login {
   private readonly loginService = inject(LoginService);
   private readonly authService = inject(AuthService);
   private readonly navigateService = inject(NavigateService);
-  private readonly _snackBar = inject(MatSnackBar);
 
   loginError = computed(()=>this.authService.loginError() );
 
   protected readonly checkLoading =computed(()=> this.authService.isLogin() );
+
 
 
   constructor() {
@@ -42,15 +41,8 @@ export class Login {
       const currentValue = this.authService.isLogin();
       this.check_login(currentValue);
     });
-    effect(() => {
-      const currentLoading = this.authService.loading();
-      if (!currentLoading) { this.check_loading();}
-    })
   }
 
-  private check_loading() {
-    const is_login=this.authService.isLogin();
-  }
 
   private check_login(yy:boolean) {
     if (yy) { this.navigateService.to_main(); }

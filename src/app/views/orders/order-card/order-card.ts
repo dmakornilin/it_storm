@@ -1,15 +1,15 @@
-import {Component, effect, inject, OnInit} from '@angular/core';
+import {Component, computed, inject, OnInit} from '@angular/core';
 import {NavigateService} from '../../../shared/services/navigate-service';
-import {ActivatedRoute} from '@angular/router';
-import {RequestTypeTitles} from '../../../shared/params';
+import {RequestTypeTitles} from '../../../core/settings/params';
 import {PriceService} from '../../../shared/services/preload/price-service';
-import {PriceListCardList, PriceListCardType} from '../../../../types/price_list/price-list-card.type';
+import {PriceListCardType} from '../../../../types/price_list/price-list-card.type';
 import {ClickOutsideDirective} from '../../../shared/directives/click-outside';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/auth/auth-service';
 import {NgStyle} from '@angular/common';
 import {OrdersService} from '../../../shared/services/orders/orders-service';
 import {ParamToOrderType} from '../../../../types/orders/param-toorder.type';
+import {ModalNavigateService} from '../../../shared/services/modal-navigate-service';
 
 @Component({
   selector: 'app-order-card',
@@ -23,29 +23,48 @@ import {ParamToOrderType} from '../../../../types/orders/param-toorder.type';
 })
 export class OrderCard implements OnInit {
 
-  protected orderForm: FormGroup;
-
   private readonly navigateSrv = inject(NavigateService);
-  private readonly routeAct = inject(ActivatedRoute);
   private readonly priceSrv = inject(PriceService);
   private readonly authService = inject(AuthService);
   private readonly orderService = inject(OrdersService);
+  private readonly modalSrv = inject(ModalNavigateService);
 
 
-  fb = inject(FormBuilder);
-  orderType: string = '';
-  orderTitle: string = '';
-  currentUrl: string = '';
-  currentSelectFlag: boolean = false;
-  currentValue: string | null = null;
-  isLogin: boolean = false;
-  errorPost = false
-  prm: ParamToOrderType | null = null;
+
+  protected readonly isLogin =computed(() => {return this.authService.isLogin()});
+
+  protected readonly ordTypeSelected = computed(() => {
+    return this.navigateSrv.orderTypeSelected()
+  })
+  protected readonly isSelectOrder = computed(() => {
+    return this.ordTypeSelected() === 'order'
+  });
+  protected readonly currentOrderTitle = computed(() => {
+    if (this.isSelectOrder()) {
+      return RequestTypeTitles.order
+    } else {
+      return RequestTypeTitles.consultation;
+    }
+  });
+
+  protected readonly getPriceList = computed(() => {
+    return this.priceSrv.priceList(); });
+
+  protected orderForm: FormGroup;
+  protected  fb = inject(FormBuilder);
+
+  protected currentUrl: string = '';
+  protected currentSelectFlag: boolean = false;
+  protected currentValue: string | null = null;
+  protected errorPost = false
 
 
-  getPriceList(): PriceListCardList {
-    return this.priceSrv.priceList();
+  to_close() {
+    this.modalSrv.closeModal();
   }
+
+
+
 
   getTitleByUrl(url: string): string | null {
     return this.priceSrv.getPriceListType(url);
@@ -57,112 +76,72 @@ export class OrderCard implements OnInit {
     this.currentSelectFlag = false;
   }
 
-  isOrder():boolean {
-    let tp=this.orderType;
-    return (tp==='order');
+
+  post_consultation() {
+    if (this.orderForm.valid && this.orderForm.value.name && this.orderForm.value.phone) {
+      this.modalSrv.toThanksModal();
+    } else { this.errorPost = true; }
   }
 
   postOrder(): void {
-    this.prm = null;
-    let yy = true;
+    let prm: ParamToOrderType | null = null;
     this.errorPost = false;
-    if (this.orderForm.valid && this.orderForm.value.name && this.orderForm.value.phone && this.orderType && this.orderType.length > 1) {
-      if (this.currentValue) {
-        this.prm = {
+    if (this.isSelectOrder()) {
+      if (this.orderForm.valid && this.orderForm.value.name && this.orderForm.value.phone && this.currentValue) {
+        prm = {
           name: this.orderForm.value.name,
           phone: this.orderForm.value.phone,
-          type: this.orderType,
+          type: this.ordTypeSelected(),
           service: this.currentValue
         }
-      } else this.navigateSrv.to_order_thanks();
+          this.orderService.setOrderRequest(prm).subscribe(order => {
+            if (order.error) {
+              this.errorPost = true;
+            } else {
+              this.modalSrv.toThanksModal();
+            }
+          })
+      }  else {
+        this.errorPost = true;
+      }
     }
-    if (this.prm) {
-      this.errorPost = false;
-      this.orderService.setOrderRequest(this.prm).subscribe(order => {
-        if (order.error) {
-          yy = order.error
-        }
-        this.errorPost = yy;
-        if (yy) {
-          this.navigateSrv.to_order_thanks();
-        }
-      })
-    } else {
-      this.errorPost = true;
+      else {  this.post_consultation(); }
   }
-}
 
-refresh_order()
-:
-void {
-  const tps
-:
-string = this.routeAct.snapshot.queryParams['tps'];
-const wid: string = this.routeAct.snapshot.queryParams['stp'];
-this.errorPost = false;
-this.prm = null;
-this.orderType = tps;
 
-if (tps === 'order') {
-  this.orderTitle = RequestTypeTitles.order
-}
-if (tps === 'consultation') {
-  this.orderTitle = RequestTypeTitles.consultation;
-  this.navigateSrv.tosbros_cons_flag();
-}
-this.currentUrl = wid;
-this.currentValue = this.priceSrv.getPriceListType(wid);
-
-const nameControl = this.orderForm.get('name');
-this.isLogin = this.authService.isLogin();
-if (this.isLogin) {
-  const name = this.authService.userInfo()?.name;
-  if (name) {
-    if (nameControl) {
-      nameControl.setValue(name)
-    }
+  refresh_form() {
+   if (this.isLogin()) {
+     const nameControl = this.orderForm.get('name');
+     const name = this.authService.userInfo()?.name;
+     if (name) {
+       if (nameControl) {
+         nameControl.setValue(name)
+       }
+     }
+   }
+    this.currentUrl=this.navigateSrv.orderSelectedService();
+    this.currentValue = this.priceSrv.getPriceListType(this.currentUrl);
   }
-} else {
-  if (nameControl) {
-    nameControl.setValue('');
+
+
+  ngOnInit() {
+     this.refresh_form();
   }
-}
-}
 
-ngOnInit()
-{
-  this.refresh_order();
-}
+  to_open_select() {
+    this.currentSelectFlag = true;
+  }
 
-to_open_select()
-{
-  this.currentSelectFlag = true;
-}
-
-hideFlagChoice()
-{
-  this.currentSelectFlag = false;
-}
-
-to_main()
-{
-  this.navigateSrv.to_main();
-}
+  hideFlagChoice() {
+    this.currentSelectFlag = false;
+  }
 
 
-constructor()
-{
-  this.orderForm = this.fb.group({
-    name: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
-  });
-  effect(() => {
-    const flagSignal = this.navigateSrv.setOrderRefresh;
-    const flag = flagSignal();
-    if (flag) {
-      this.refresh_order();
-    }
-  });
+  constructor() {
+    this.orderForm = this.fb.group({
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+    });
 
-}
+  }
 }

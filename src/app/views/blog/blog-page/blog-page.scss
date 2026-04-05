@@ -1,11 +1,11 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 
 .blog-section {
-  @include page-bottom;
+  @include mix.page-bottom;
   .container {
     box-sizing: border-box;
     padding-right: 0;
@@ -16,7 +16,7 @@
       font-family: 'Lora', sans-serif;
       font-weight: 400;
       font-size: 38px;
-      color: $item-active-color;
+      color: var.$item-active-color;
 
     }
 
@@ -35,7 +35,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include page-bottom;
+      @include mix.page-bottom;
     }
   }
 }

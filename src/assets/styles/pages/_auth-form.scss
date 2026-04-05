@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../mixins";
+@use "../variables" as var;
+@use "../mixins" as mix;
 
 
 .auth-form {
@@ -13,7 +13,7 @@
 
     .auth-item-title {
       width: 430px;
-      @include head-lora-36;
+      @include mix.head-lora-36;
       margin-bottom: 40px;
     }
 
@@ -47,7 +47,7 @@
 
     span {
       cursor: pointer;
-      color: $item-active-color;
+      color: var.$item-active-color;
       text-decoration: underline;
     }
   }
@@ -61,7 +61,7 @@
     a {
       margin-left: 8px;
       text-decoration: none;
-      color: $item-active-color;
+      color: var.$item-active-color;
     }
   }
 }

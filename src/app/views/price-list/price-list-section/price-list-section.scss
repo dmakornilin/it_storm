@@ -1,14 +1,14 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/global";
-@import "../../../../assets/styles/mixins";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/global" as global;
+@use "../../../../assets/styles/mixins" as mix;
 
 
 .price-list-section {
   margin-bottom: 120px;
-  .container {
+  .price-list-container {
     .price-section-title {
-      @include head-lora-38;
+      @include mix.head-lora-38;
       margin-bottom: 40px;
     }
 

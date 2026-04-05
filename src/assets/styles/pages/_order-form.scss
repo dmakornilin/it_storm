@@ -1,19 +1,17 @@
-@import "../variables";
-@import "../mixins";
+@use "../variables" as var;
+@use "../mixins" as mix;
+
 
 .order-container {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%;
-  height: calc(100vh - 431px);
+  box-sizing: border-box;
 
   .order-div {
     width: 727px;
     height: 489px;
-    border-radius: 10px;
-    border: 2px solid $item-active-color;
     position: relative;
 
     .order-block {
@@ -28,7 +26,7 @@
         font-family: 'Lora', sans-serif;
         font-weight: 400;
         font-size: 38px;
-        color: $item-active-color;
+        color: var.$item-active-color;
         line-height: 130%;
         justify-content: center;
         flex-wrap: wrap;
@@ -60,7 +58,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
             font-size: 14px;
-            color: $item-active-color;
+            color: var.$item-active-color;
           }
         }
 
@@ -71,7 +69,7 @@
           font-family: 'Montserrat', sans-serif;
           font-weight: 400;
           font-size: 14px;
-          color: $item-active-color;
+          color: var.$item-active-color;
 
           .order-select-selected {
             cursor: pointer;
@@ -80,7 +78,7 @@
             justify-content: space-between;
             padding-top: 2px;
             height: 53px;
-            border: 1px solid $item-active-color;
+            border: 1px solid var.$item-active-color;
             box-sizing: border-box;
 
             .order-selected-value {
@@ -101,7 +99,7 @@
             left: 0;
             right: 0;
             border-radius: 3px;
-            border: 1px solid $item-active-color;
+            border: 1px solid var.$item-active-color;
             box-sizing: border-box;
             z-index: 1111;
             background: white;

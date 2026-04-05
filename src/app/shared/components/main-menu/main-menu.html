@@ -1,11 +1,11 @@
-<div class="main-menu" [class.font500]="isNavigated"  >
+<div class="main-menu" [class.font500]="isNavigated()"  >
     <nav>
     <ul>
-      <li [class.active]="isNavigated && item_selected===0" (click)="to_click(0,'menu')" [class.font400]="!isNavigated" >Услуги</li>
-      <li [class.active]="isNavigated && item_selected===1" (click)="to_click(1,'about')" [class.font400]="!isNavigated">О нас</li>
-      <li [class.active]="isNavigated && item_selected===2" (click)="to_click(2,'articles')" [class.font400]="!isNavigated">Статьи</li>
-      <li [class.active]="isNavigated && item_selected===3" (click)="to_click(3,'blog')" [class.font400]="!isNavigated">Отзывы</li>
-      <li [class.active]="isNavigated && item_selected===4" (click)="to_click(4,'contacts')" [class.font400]="!isNavigated">Контакты</li>
+      <li [class.active]="isNavigated() && item_selected===0" (click)="to_click(0)" [class.font400]="!isNavigated()" >Услуги</li>
+      <li [class.active]="isNavigated() && item_selected===1" (click)="to_click(1)" [class.font400]="!isNavigated()">О нас</li>
+      <li [class.active]="isNavigated() && item_selected===2" (click)="to_click(2)" [class.font400]="!isNavigated()">Статьи</li>
+      <li [class.active]="isNavigated() && item_selected===3" (click)="to_click(3)" [class.font400]="!isNavigated()">Отзывы</li>
+      <li [class.active]="isNavigated() && item_selected===4" (click)="to_click(4)" [class.font400]="!isNavigated()">Контакты</li>
     </ul>
   </nav>
 </div>

@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 
 .blog-article {
@@ -22,8 +22,8 @@
       display: flex;
 
       .article-header-main {
-        @include default-font400;
-        color: $active-background-color;
+        @include mix.default-font400;
+        color: var.$active-background-color;
         padding-right: 8px;
 
         span {
@@ -32,8 +32,8 @@
       }
 
       .article-header-article {
-        @include default-font500;
-        color: $item-active-color;
+        @include mix.default-font500;
+        color: var.$item-active-color;
 
       }
     }
@@ -50,7 +50,7 @@
           font-weight: 400;
           font-size: 38px;
           line-height: 130%;
-          color: $item-active-color;
+          color: var.$item-active-color;
           margin-bottom: 38px;
         }
 
@@ -59,7 +59,7 @@
           font-weight: 400;
           font-size: 20px;
           line-height: 130%;
-          color: $item-active-color;
+          color: var.$item-active-color;
 
         }
       }
@@ -88,21 +88,21 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 130%;
-        color: $menu-item-color;
+        color: var.$menu-item-color;
 
         h1 {
           font-family: 'Lora', sans-serif;
           font-weight: 400;
           font-size: 38px;
           line-height: 130%;
-          color: $item-active-color;
+          color: var.$item-active-color;
         }
 
         h3 {
           font-family: 'Montserrat', sans-serif;
           font-weight: 500;
           font-size: 20px;
-          color: $item-active-color;
+          color: var.$item-active-color;
         }
       }
 
@@ -111,7 +111,7 @@
           font-family: 'Lora', sans-serif;
           font-weight: 400;
           font-size: 26px;
-          color: $item-active-color;
+          color: var.$item-active-color;
           margin-top: 80px;
           margin-bottom: 20px;
 
@@ -136,7 +136,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             font-size: 14px;
-            color: $item-active-color;
+            color: var.$item-active-color;
             padding-right: 20px;
           }
 
@@ -156,14 +156,14 @@
 
             .commblock-title {
               margin-bottom: 40px;
-              @include head-lora-38;
+              @include mix.head-lora-38;
             }
 
             .first-comments-info {
               font-family: 'Montserrat', sans-serif;
               font-weight: 400;
               font-size: 14px;
-              color: $menu-item-color;
+              color: var.$menu-item-color;
               margin-bottom: 40px;
             }
 
@@ -172,11 +172,11 @@
                 margin-bottom: 20px;
 
                 .add-comment-input {
-                  border: 1.5px solid $item-active-color;
+                  border: 1.5px solid var.$item-active-color;
                   width: 818px;
                   height: 248px;
                   outline: none;
-                  color: $menu-item-color;
+                  color: var.$menu-item-color;
                   font-size: 16px;
 
                   &.empty-text {
@@ -202,17 +202,17 @@
               font-family: 'Montserrat', sans-serif;
               font-weight: 400;
               font-size: 14px;
-              color: $menu-item-color;
+              color: var.$menu-item-color;
 
               span {
                 cursor: pointer;
-                color: $item-active-color;
+                color: var.$item-active-color;
               }
             }
 
             .empty-comments-info {
               margin-top: 60px;
-              @include head-lora-36;
+              @include mix.head-lora-36;
             }
 
           }
@@ -226,7 +226,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             font-size: 20px;
-            color: $item-active-color;
+            color: var.$item-active-color;
             margin-right: 10px;
           }
         }

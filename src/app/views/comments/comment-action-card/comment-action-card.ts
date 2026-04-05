@@ -1,8 +1,8 @@
-import {Component, computed, inject, Input} from '@angular/core';
+import {Component, computed, inject, input} from '@angular/core';
 import {ArticleCommentItem} from '../../../../types/articles/article-detail.type';
 import {AuthService} from '../../../core/auth/auth-service';
 import {CommentActionsService} from '../../../shared/services/comments/comment-actions-service';
-import {UserCommentActions} from '../../../shared/params';
+import {UserCommentActions} from '../../../core/settings/params';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 
@@ -11,6 +11,8 @@ const violate_success: string = 'Жалоба отправлена';
 const action_error: string = 'Ошибка учета отклика';
 const violate_repeate: string = 'Жалоба уже отправлена';
 
+
+
 @Component({
   selector: 'app-comment-action-card',
   imports: [],
@@ -18,11 +20,18 @@ const violate_repeate: string = 'Жалоба уже отправлена';
   styleUrl: './comment-action-card.scss',
 })
 export class CommentActionCard {
-  @Input() itm: ArticleCommentItem | null = null;
+  public readonly itm = input.required<ArticleCommentItem>();
+
   private readonly authService = inject(AuthService);
   private readonly actionService = inject(CommentActionsService);
-  isLogin = computed(() => this.authService.isLogin);
+
+  protected readonly isLogin = computed(()=> {
+    return this.authService.isLogin();
+  } )
+
+
   _snackBar = inject(MatSnackBar);
+
 
 
   setActionNom(nomAct: number, prm: number, tek_nom: number) {
@@ -34,20 +43,20 @@ export class CommentActionCard {
 
       if (nn === 0) {
         if (tek_nom === 1) {
-          this.itm.likesCount--
+          this.itm().likesCount--
         }
         if (tek_nom === 2) {
-          this.itm.dislikesCount--
+          this.itm().dislikesCount--
         }
-        this.itm.nomer = nn;
+        this.itm().nomer = nn;
       }
       if (nn === 1) {
-        this.itm.likesCount++;
-        this.itm.nomer = nn;
+        this.itm().likesCount++;
+        this.itm().nomer = nn;
       }
       if (nn === 2) {
-        this.itm.dislikesCount++;
-        this.itm.nomer = nn;
+        this.itm().dislikesCount++;
+        this.itm().nomer = nn;
       }
 
     }
@@ -56,14 +65,14 @@ export class CommentActionCard {
 
   post_action(nn: number): void {
     if (this.itm && this.isLogin()) {
-      let tek_itm = this.itm;
+      let tek_itm = this.itm();
       let tek_nom = 0;
       let to_act = -10;
       let yy = (nn === 1 || nn === 2 || nn === 3);
       let s1 = '';
       let s2 = '';
       if (tek_itm.nomer) {
-        tek_nom = tek_itm.nomer
+        tek_nom = tek_itm.nomer as number
       }
 
 

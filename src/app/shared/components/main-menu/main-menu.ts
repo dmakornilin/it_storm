@@ -1,5 +1,6 @@
-import {Component, effect, inject, Input} from '@angular/core';
+import {Component, effect, inject, input, Input} from '@angular/core';
 import {NavigateService} from '../../services/navigate-service';
+import {MENU_NOTHING_INDEX} from './main-menu-index';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,17 +10,16 @@ import {NavigateService} from '../../services/navigate-service';
   templateUrl: './main-menu.html',
   styleUrl: './main-menu.scss',
 })
+
+
+
 export class MainMenu {
-
- @Input() isNavigated = false;
-
- navigateSrv = inject(NavigateService);
-
-
- item_selected =-10;
+  private readonly navigateSrv = inject(NavigateService);
+  protected item_selected =MENU_NOTHING_INDEX;
+  public readonly isNavigated = input.required<boolean>();
 
 
-  to_click(itm_id:number,rtUrl:string) {
+  to_click(itm_id:number) {
     this.navigateSrv.setSelected(itm_id);
  }
 

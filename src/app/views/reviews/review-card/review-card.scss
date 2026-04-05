@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 .review-block {
     width: 396px;
@@ -9,7 +9,7 @@
     padding: 30px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 2px solid $item-active-color;
+    border: 2px solid var.$item-active-color;
 
     .review-title {
       display: flex;
@@ -21,7 +21,7 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background-color: $default-shadow-color;
+        background-color: var.$default-shadow-color;
         background-size: contain;
         overflow: hidden;
       }
@@ -31,13 +31,13 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         font-size: 18px;
-        color: $item-active-color;
+        color: var.$item-active-color;
       }
     }
 
     .review-text {
-      @include default-font400;
+      @include mix.default-font400;
       line-height: 140%;
-      color: $menu-item-color;
+      color: var.$menu-item-color;
     }
 }

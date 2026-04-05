@@ -1,8 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 .category-filters {
   position: absolute;
@@ -11,7 +10,7 @@
   width: 257px;
   z-index: 22;
   &.to-choice {
-    border: $active-background-color 1px solid;
+    border: var.$active-background-color 1px solid;
     padding-bottom: 16px;
 
   }
@@ -24,7 +23,7 @@
     width: 100%;
 
     &.to-choice {
-      background-color: $active-background-color;
+      background-color: var.$active-background-color;
     }
   }
 
@@ -35,12 +34,11 @@
 
   .filter-caption {
     padding-left: 20px;
-    @include default-font400;
-    color: $menu-item-color;
+    @include mix.default-font400;
+    color: var.$menu-item-color;
   }
 
   .items-list {
-    //z-index:222;
     :hover {
       background-color: lightgrey;
     }
@@ -51,9 +49,9 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 8px;
-      color: $font-gray-color;
+      color: var.$font-gray-color;
       &.selected {
-        color: $menu-item-color;
+        color: var.$menu-item-color;
       }
       .ctgitem-caption {
         padding-left: 20px;

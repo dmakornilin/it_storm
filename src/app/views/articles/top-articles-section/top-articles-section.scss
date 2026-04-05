@@ -1,14 +1,14 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 .top-articles-section{
-  @include page-bottom;
- .container {
+  @include mix.page-bottom;
+ .top-articles-container {
    .top-articles-caption {
      margin-bottom: 40px;
-     @include head-lora-38;
+     @include mix.head-lora-38;
    }
    .top-articles-items {
      display: flex;
@@ -27,7 +27,7 @@
          font-family: 'Montserrat', sans-serif;
          font-weight: 500;
          font-size: 20px;
-         color: $item-active-color;
+         color: var.$item-active-color;
        }
        svg {
          transform: translateY(2px);

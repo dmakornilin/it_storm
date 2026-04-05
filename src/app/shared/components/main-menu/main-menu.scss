@@ -1,11 +1,11 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/mixins";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/mixins" as mix;
 
 .main-menu {
   display: flex;
-  @include default-font500;
+  @include mix.default-font500;
   .font400 {
-    @include default-font400;
+    @include mix.default-font400;
   }
   nav ul {
     margin: 0;
@@ -14,13 +14,13 @@
     li {
       margin-right: 30px;
       list-style: none;
-      color: $menu-item-color;
+      color: var.$menu-item-color;
       cursor: pointer;
       &:hover {
         color: blue;
       }
       &.active {
-        color: $item-active-color;
+        color: var.$item-active-color;
       }
 
     }

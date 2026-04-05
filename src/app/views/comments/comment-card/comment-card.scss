@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 
 .comment-card-block {
@@ -25,7 +25,7 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
         font-size: 18px;
-        color: $item-active-color;
+        color: var.$item-active-color;
       }
       .comment-date {
         font-family: 'Montserrat', sans-serif;
@@ -41,7 +41,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 140%;
-      color: $menu-item-color;
+      color: var.$menu-item-color;
 
     }
     .comment-actions {

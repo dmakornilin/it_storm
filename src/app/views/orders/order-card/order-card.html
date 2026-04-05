@@ -2,12 +2,12 @@
   <div class="order-div" [formGroup]="orderForm">
     <div class="order-block">
       <div class="order-title">
-        <div>{{ orderTitle }}</div>
+        <div>{{ currentOrderTitle() }}</div>
       </div>
     </div>
 
 
-    @if (isOrder()) {
+    @if (isSelectOrder()) {
       <div class="order-item">
         <div class="order-item-input">
           <div class="order-select-block">
@@ -74,7 +74,7 @@
       <div class="error-messages">произошла ошибка при отправке формы, попробуйте еще раз</div>
     }
 
-    <div class="order-close-section" (click)="to_main()">
+    <div class="order-close-section" (click)="to_close()">
       <div class="order-close-div">
         <div class="close-line-first"></div>
         <div class="close-line-second"></div>

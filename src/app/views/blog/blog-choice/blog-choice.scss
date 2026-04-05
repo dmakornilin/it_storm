@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 .blog-choice {
   .container {
@@ -26,11 +26,11 @@
 
       .item-ctg-select {
         display: flex;
-        border: $item-active-color 2px solid;
+        border: var.$item-active-color 2px solid;
         border-radius: 5px;
         padding: 3px 28px;
         align-items: center;
-        color: $item-active-color;
+        color: var.$item-active-color;
         .item-ctg-name {
           padding-right: 8px;
         }

@@ -1,4 +1,4 @@
-import {Component,  Input} from '@angular/core';
+import {Component, computed, Input, input} from '@angular/core';
 import {ArticleCommentItem} from '../../../../types/articles/article-detail.type';
 import {DatePipe} from '@angular/common';
 import {CommentActionCard} from '../comment-action-card/comment-action-card';
@@ -13,13 +13,12 @@ import {CommentActionCard} from '../comment-action-card/comment-action-card';
   styleUrl: './comment-card.scss',
 })
 export class CommentCard {
+  @Input() nomerItem:number | null= null;
+  public readonly comment =input.required<ArticleCommentItem>();
 
- @Input() comment: ArticleCommentItem | null =null;
- @Input() nomerItem:number | null= null;
+  protected readonly imageUrl = computed(()=>{
+    return './images/system/avatar.png';
+  })
 
-
-  imageUrl(): string {
-      return './images/system/avatar.png';
-  }
 
 }

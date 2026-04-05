@@ -1,11 +1,16 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/pages/order-form";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/global" as glob;
+@use "../../../../assets/styles/pages/order-form" as order-form;
+
 
 .thanks-block {
   height: 100% !important;
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 333;
   .thanks_title {
     margin-top: 0 !important;
     div {
@@ -16,7 +21,13 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: $default-text-color;
+    color: var.$default-text-color;
     margin-bottom: 40px;
   }
+
+  .thanks-action-block {
+  }
+
 }
+
+

@@ -15,7 +15,7 @@
         }
       },
       "i18n": {
-        "sourceLocale": "ru-Ru"
+        "sourceLocale": "ru"
       },
       "root": "",
       "sourceRoot": "src",
@@ -31,6 +31,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@taiga-ui/icons/src",
+                "output": "assets/taiga-ui/icons"
               }
             ],
             "styles": [

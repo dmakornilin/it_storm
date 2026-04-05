@@ -1,11 +1,16 @@
 @use "fonts" as *;
+@use "variables" as var;
 
 
+@mixin default-container-pdxx {
+  padding-left: var.$default-padding-xx;
+  padding-right: var.$default-padding-xx;
+}
 @mixin default-font600 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: $item-active-color;
+  color: var.$item-active-color;
 }
 
 @mixin default-font500 {
@@ -24,14 +29,14 @@
   font-family: 'Lora', sans-serif;
   font-weight: 400;
   font-size: 36px;
-  color: $item-active-color;
+  color: var.$item-active-color;
 }
 
 @mixin head-lora-38 {
   font-family: 'Lora', sans-serif;
   font-weight: 400;
   font-size: 38px;
-  color: $item-active-color;
+  color: var.$item-active-color;
 }
 
 @mixin page-top {

@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ArticleCommentItem} from '../../../../types/articles/article-detail.type';
-import {UserCommentActions} from '../../params';
+import {UserCommentActions} from '../../../core/settings/params';
 import {DefResponceType} from '../../../../types/def.responce.type';
 import {environment} from '../../../../environments/environment';
 import {CommentActionsList} from '../../../../types/comments/comment-actions.type';

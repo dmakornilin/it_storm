@@ -5,9 +5,9 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
-@import "variables";
-@import "fonts";
-@import "global";
+@use "variables" as var;
+@use "fonts" as fonts;
+@use "global" as glob;
 
 html {
   height: 100%;
@@ -74,16 +74,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  .app-container{
-    max-width: 1440px;
-  }
 }
 
 .divrow-right {
   width: 10px;
   height: 10px;
-  border-right: 2px solid $item-active-color;
-  border-top: 2px solid $item-active-color;
+  border-right: 2px solid var.$item-active-color;
+  border-top: 2px solid var.$item-active-color;
   transform: rotate(45deg);
   cursor: pointer;
 
@@ -98,8 +95,8 @@ body {
 .divrow-left {
   width: 10px;
   height: 10px;
-  border-left: 2px solid $item-active-color;
-  border-bottom: 2px solid $item-active-color;
+  border-left: 2px solid var.$item-active-color;
+  border-bottom: 2px solid var.$item-active-color;
   transform: rotate(45deg);
   cursor: pointer;
 
@@ -113,8 +110,8 @@ body {
 .divrow-right15 {
   width: 15px;
   height: 15px;
-  border-right: 2px solid $item-active-color;
-  border-top: 2px solid $item-active-color;
+  border-right: 2px solid var.$item-active-color;
+  border-top: 2px solid var.$item-active-color;
   transform: rotate(45deg);
   cursor: pointer;
 
@@ -134,8 +131,8 @@ body {
 .divrow-left15 {
   width: 15px;
   height: 15px;
-  border-left: 2px solid $item-active-color;
-  border-bottom: 2px solid $item-active-color;
+  border-left: 2px solid var.$item-active-color;
+  border-bottom: 2px solid var.$item-active-color;
   transform: rotate(45deg);
   cursor: pointer;
 
@@ -157,7 +154,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
-  color: $default-text-color;
+  color: var.$default-text-color;
   cursor: pointer;
   &:hover {
     color: blue;
@@ -182,4 +179,21 @@ app-child {
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.5s ease-in;
+}
+
+
+.mat-mdc-dialog-surface {
+  border-radius: 10px !important;
+}
+.panel-class-dialog {
+  border-radius: 10px !important;
+  border: 2px solid var.$item-active-color;
+}
+
+
+.panel-class-order {
+  border-radius: 10px !important;
+  width: 727px !important;
+  height: 489px !important;
+  border: 2px solid var.$item-active-color;
 }

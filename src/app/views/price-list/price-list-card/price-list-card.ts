@@ -1,7 +1,7 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, computed, inject, input} from '@angular/core';
 import {PriceListCardType} from '../../../../types/price_list/price-list-card.type';
 import {CurrencyPipe} from '@angular/common';
-import {NavigateService} from '../../../shared/services/navigate-service';
+import {ModalNavigateService} from '../../../shared/services/modal-navigate-service';
 
 @Component({
   selector: 'app-price-list-card',
@@ -12,20 +12,12 @@ import {NavigateService} from '../../../shared/services/navigate-service';
   styleUrl: './price-list-card.scss',
 })
 export class PriceListCard {
- @Input() card: PriceListCardType | null =null;
+  private readonly modalSrv = inject(ModalNavigateService);
+  protected readonly image_file = computed(()=> {
+    return './images/pages/price_list/' + this.card().image; } )
+  public readonly card = input.required<PriceListCardType>();
 
- navigateSrv = inject(NavigateService);
-
- image_file():string{
-   if (this.card) {
-     return './images/pages/price_list/' + this.card.image;
-   } else {return ''}
- }
-
-
- to_order():void {
-   if (this.card) {
-     this.navigateSrv.to_order(this.card.url);
-   }
+  to_order():void {
+      this.modalSrv.toOrderService(this.card().url);
  }
 }

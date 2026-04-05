@@ -1,11 +1,11 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 .action-list{
   margin-bottom: 120px;
-  .container{
+  .action-container{
     position: relative;
     .left-step-svg {
       position: absolute;
@@ -15,7 +15,7 @@
     .right-step-svg {
       position: absolute;
       top: 50%;
-      right: 112px;
+      right: 12px;
     }
     .pages-block {
       position: absolute;

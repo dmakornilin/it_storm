@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 
 .paginator-block{
@@ -31,9 +31,9 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 20px;
-    color: $menu-item-color;
+    color: var.$menu-item-color;
     &.is-active {
-      color: $default-shadow-color;
+      color: var.$default-shadow-color;
     }
 
   }

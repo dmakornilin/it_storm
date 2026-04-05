@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input, Input} from '@angular/core';
 import {AdvantageItemType} from '../../../../types/advantages/advantage-item.type';
 
 @Component({
@@ -8,5 +8,5 @@ import {AdvantageItemType} from '../../../../types/advantages/advantage-item.typ
   styleUrl: './advantage-card.scss',
 })
 export class AdvantageCard {
-  @Input() advantage: AdvantageItemType | null  = null;
+   public readonly advantage = input.required<AdvantageItemType>();
 }

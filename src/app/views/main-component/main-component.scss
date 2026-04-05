@@ -1,10 +1,11 @@
-@import "../../../assets/styles/mixins";
-@import "../../../assets/styles/variables";
+@use "../../../assets/styles/mixins" as mix;
+@use "../../../assets/styles/variables" as var;
 
 
 .main {
-  .container {
-    @include page-bottom;
+  .main-component-container {
+
+    width: 100%;
     display: flex;
     justify-content: space-around;
   }
@@ -15,5 +16,16 @@
   .container {
     display: flex;
     justify-content: space-around;
+  }
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .main-component-container {
+    width: var.$default-component-width;
+
   }
 }

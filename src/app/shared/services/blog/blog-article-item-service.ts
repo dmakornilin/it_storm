@@ -17,17 +17,18 @@ import {AuthService} from '../../../core/auth/auth-service';
   providedIn: 'root',
 })
 export class BlogArticleItemService {
+  private readonly authService = inject(AuthService);
+  private readonly actionSrv = inject(CommentActionsService);
+  protected readonly _snackBar = inject(MatSnackBar);
+  private readonly http = inject(HttpClient);
+
+
   articleDetailInfo = signal<ArticleDetailType | null>(null);
   relatedArticles = signal<PopularArticleType>([]);
   totalCommentsCount = signal<number>(0);
   isCommentLoad = signal<boolean>(false);
   articleId = signal<string>('');
   articleUrl = signal<string>('');
-  private readonly authService = inject(AuthService);
-  private readonly actionSrv = inject(CommentActionsService);
-  protected readonly _snackBar = inject(MatSnackBar);
-  private readonly http = inject(HttpClient);
-
   comments = signal<ArticleCommentItem[]>([]);
 
 

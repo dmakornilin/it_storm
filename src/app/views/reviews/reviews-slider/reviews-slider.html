@@ -1,17 +1,19 @@
 <section class="reviews-slider">
-  <div class="container">
+  <div class="reviews-slider-container">
     <div class="slider-caption">Отзывы о нашей работе</div>
     <div class="reviews-items">
       @for (i of [0, 1, 2]; track i) {
         <div class="review-item">
-          <app-review-card [review]="getItemLink(i)"></app-review-card>
+          @if (getItemLink(i)) {
+            <app-review-card [review]="getItemLink(i)"></app-review-card>
+          }
         </div>
       }
     </div>
 
 
     <div class="toprev-item" (click)="prev_slide()">
-      <div class="divrow-left" [class.inactive]="startItem===0" ></div>
+      <div class="divrow-left" [class.inactive]="startItem===0"></div>
     </div>
     <div class="tonext-item" (click)="next_slide()">
       <div class="divrow-right" [class.inactive]="last_slide()"></div>

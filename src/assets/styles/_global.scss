@@ -1,27 +1,32 @@
- @import "variables";
- @import "mixins";
- @import "fonts";
+ @use "variables" as var;
+ @use "fonts" as fonts;
 
  body {
    font-family: "Montserrat", sans-serif;
    font-weight: 400;
    .container {
-     padding-left: $default-padding-xx;
-     padding-right: $default-padding-xx;
+     width: var.$default-content-width;
+     padding-left: var.$default-padding-xx;
+     padding-right: var.$default-padding-xx;
    }
  }
-
+.left-padding {
+  padding-left: var.$default-padding-xx;
+}
+.right-padding {
+  padding-left: var.$default-padding-xx;
+}
 
  .button {
    border-radius: 5px;
    padding: 10px 20px;
    cursor: pointer;
-   border: none;
+   border: none !important;
    color: white;
    font-size: 12px;
    font-family: 'Montserrat', sans-serif;
    font-weight: 500;
-   background: $item-active-color;
+   background: var.$item-active-color;
    &.small-button {
      width: 153px;
      height: 36px;
@@ -80,7 +85,7 @@
  }
 
  .text-mark {
-   color: $item-active-color;
+   color: var.$item-active-color;
  }
 
 .otstup20 {

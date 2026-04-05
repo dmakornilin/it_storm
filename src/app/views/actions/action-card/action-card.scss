@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/mixins";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/global" as global;
 
 
 
@@ -25,7 +25,7 @@
       font-size: 12px;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      color: $item-active-color;
+      color: var.$item-active-color;
       padding-left: 80px;
       margin-top: 8%;
     }
@@ -68,7 +68,7 @@
       aspect-ratio: 1 / 1;
       position: absolute;
       border-radius: 50%;
-      background-color: $default-shadow-color;
+      background-color: var.$default-shadow-color;
       transform: translate(-40%, -50%);
       z-index: -2;
     }

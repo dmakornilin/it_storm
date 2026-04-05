@@ -1,3 +1,4 @@
+
 <div class="order-container">
   <div class="order-div">
     <div class="order-block thanks-block">
@@ -6,16 +7,17 @@
       </div>
       <div class="thanks_message">Мы свяжемся с Вами при первой же возможности</div>
       <div class="thanks-action-block">
-        <button class="button thanks-button" (click)="to_main()">Окей</button>
+        <span class="button" (click)="to_close()">Окей</span>
       </div>
     </div>
 
-
-    <div class="order-close-section" (click)="to_main()">
-      <div class="order-close-div">
+    <div class="order-close-section">
+      <div class="order-close-div" (click)="to_close()">
         <div class="close-line-first"></div>
         <div class="close-line-second"></div>
       </div>
     </div>
   </div>
 </div>
+
+

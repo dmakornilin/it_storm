@@ -1,7 +1,6 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, computed, inject, input, Input} from '@angular/core';
 import {ArticleItemType} from '../../../../types/articles/article-item.type';
 import {NavigateService} from '../../../shared/services/navigate-service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-top-article-card',
@@ -10,19 +9,15 @@ import {Router} from '@angular/router';
   styleUrl: './top-article-card.scss',
 })
 export class TopArticleCard {
- @Input() article: ArticleItemType | null =null;
-   private readonly navigateSrv =inject(NavigateService);
-  private readonly  router = inject(Router);
 
- image_path():string | null {
-   if (this.article) {
-     return './images/pages/articles/'+this.article.image;
-   } else { return null}
- }
-
+  private readonly navigateSrv =inject(NavigateService);
+  protected readonly image_path = computed(()=> {
+      return './images/pages/articles/' + this.article().image;
+    }
+  )
+  public readonly article = input.required<ArticleItemType>();
 
   navigate_article() {
-    const url= this.article?.url;
-    if (url) { this.navigateSrv.to_blogArticle(url); }
+     this.navigateSrv.to_blogArticle(this.article().url);
   }
 }

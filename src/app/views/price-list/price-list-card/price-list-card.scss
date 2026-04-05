@@ -1,6 +1,7 @@
-@import "../../../../assets/styles/variables";
-@import "../../../../assets/styles/fonts";
-@import "../../../../assets/styles/global";
+@use "../../../../assets/styles/variables" as var;
+@use "../../../../assets/styles/mixins" as mix;
+@use "../../../../assets/styles/fonts" as fonts;
+@use "../../../../assets/styles/global" as global;
 
 .product-card{
   width: 290px;
@@ -14,7 +15,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 20px;
-    color: $item-active-color;
+    color: var.$item-active-color;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -29,7 +30,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 130%;
-      color: $menu-item-color;
+      color: var.$menu-item-color;
     }
     .product-card-actions {
       width: 100%;
@@ -45,7 +46,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        @include default-font600;
+        @include mix.default-font600;
       }
 
     }

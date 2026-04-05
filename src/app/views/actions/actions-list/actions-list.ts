@@ -29,10 +29,10 @@ export class ActionsList {
     if (this.currentItem!=0) {this.currentItem-- } else this.currentItem=2;
   }
 
-  currentItemLink() : ActionItemType |null {
+  currentItemLink() : ActionItemType | undefined {
     if ( (this.actions.length> this.currentItem) && (this.currentItem>=0)) {
       return this.actions[this.currentItem];
-    }  else return null;
+    } else return undefined
   }
 
   to_choice(itm:number):void {

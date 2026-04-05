@@ -1,15 +1,20 @@
-@import "../variables";
-@import "../mixins";
+@use "../variables" as var;
+@use "../mixins" as mix;
 
 
 .document-section {
-  .container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .document-container {
+    width: var.$default-content-width;
     margin-top: 40px;
     margin-bottom: 80px;
     .document-title {
       display: flex;
       justify-content: center;
-      @include head-lora-36;
+      @include mix.head-lora-36;
       margin-top: 32px;
       margin-bottom: 40px;
       flex-wrap: wrap;
@@ -23,12 +28,12 @@
     }
     .doc-paragr {
       margin: 0 80px 12px 80px;
-      @include default-font400;
+      @include mix.default-font400;
       line-height: 120%;
       p {
         margin: 8px 0 8px 20px;
         span {
-          color: $item-active-color;
+          color: var.$item-active-color;
           cursor: pointer;
         }
 
@@ -36,7 +41,7 @@
     }
     .doc-paragr-title {
       margin: 20px 100px 8px 100px;
-      @include default-font500;
+      @include mix.default-font500;
       line-height: 130%;
 
     }

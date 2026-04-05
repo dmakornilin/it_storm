@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, computed, input} from '@angular/core';
 import {ReviewItem} from '../../../../types/reviews/review-item.type';
 
 @Component({
@@ -8,12 +8,9 @@ import {ReviewItem} from '../../../../types/reviews/review-item.type';
   styleUrl: './review-card.scss',
 })
 export class ReviewCard {
-  @Input() review: ReviewItem | null = null;
-
-  imageUrl():string{
-    if (this.review) {
-      return './images/pages/reviews/' + this.review.image;
-    } else return '';
-  }
+   readonly review = input.required<ReviewItem>();
+   protected readonly imageUrl = computed(()=>{
+     return './images/pages/reviews/' + this.review().image;
+   })
 
 }

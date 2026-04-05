@@ -19,7 +19,8 @@ export class BlogPage implements OnInit {
 
    private readonly articlesSrv = inject(BlogArticlesService);
    private readonly blogPaginatorSrv = inject(BlogPaginatorService);
-   protected readonly getArticles = computed(()=>this.articlesSrv.articles().items);
+   protected readonly getArticles = computed(()=> {
+      return this.articlesSrv.articles().items  } );
 
    ngOnInit() {
      this.articlesSrv.loading();
